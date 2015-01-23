@@ -1,0 +1,4 @@
+cpu1 memeory_bus_delay+1  frequence*0.8 
+cpu2  frequence*0.9 robsize/2 
+cpu3  DL1/2 ALU/2 
+cpu4  0.6 frequence

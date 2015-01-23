@@ -1,0 +1,63 @@
+workload		bzip2	swim	crafty	bzip2	vortex	gap	vortex	gcc	mesa	gcc	crafty	wupwise	wupwise	wupwise	equake	bzip2
+hungarian	20.91755
+local	21.81701	21.3419	22.5822
+ga	22.09336	21.542224	22.808146
+random	22.71217	21.7869	23.1592
+deny_random	21.07559	21.0652	21.0916
+deny_life	21.30470	21.2769	21.3451
+
+workload		vortex	gcc	wupwise	twolf	ammp	mesa	gap	twolf	vpr	mesa	wupwise	equake	mcf	wupwise	vortex	gap
+hungarian	15.600349
+local	15.97469	15.7875	16.201
+ga	16.12389	15.850197	16.325270
+random	16.29014	15.9195	16.609
+deny_random	15.67246	15.671	15.7003
+deny_life	15.90599	15.7548	16.0577
+
+workload		gcc	equake	ammp	vortex	wupwise	gzip	parser	swim	swim	mesa	twolf	vortex	twolf	gcc	vpr	equake
+hungarian	17.98881
+local	18.63054	18.2189	18.9185
+ga	18.80183	18.416061	19.171527
+random	19.15244	18.692	19.5776
+deny_random	18.09022	18.0698	18.1264
+deny_life	18.35196	18.2333	18.4355
+
+workload		gap	vortex	gap	wupwise	vpr	swim	vpr	parser	wupwise	wupwise	bzip2	mcf	mcf	equake	mcf	swim
+hungarian	15.283886
+local	15.83212	15.6473	16.0841
+ga	15.95907	15.609709	16.201971
+random	16.16585	15.8478	16.5154
+deny_random	15.34161	15.3215	15.357
+deny_life	15.50107	15.4091	15.596
+
+workload		mesa	crafty	twolf	twolf	crafty	bzip2	wupwise	ammp	twolf	crafty	vpr	vpr	ammp	gzip	crafty	ammp
+hungarian	16.92743
+local	17.47260	17.2364	17.8116
+ga	17.59313	17.369181	18.132914
+random	17.90876	17.4084	18.4317
+deny_random	16.98996	16.9801	16.9975
+deny_life	17.18991	17.0969	17.2167
+
+workload		gcc	crafty	parser	bzip2	vpr	bzip2	gcc	equake	gzip	vpr	gap	vpr	mesa	wupwise	gcc	vpr
+hungarian	21.03581
+local	21.98242	21.5733	22.607
+ga	22.43809	21.984953	23.097223
+random	23.10473	22.4974	23.6746
+deny_random	21.10613	21.0813	21.1264
+deny_life	21.53137	21.3761	21.6976
+
+workload		twolf	vortex	crafty	bzip2	equake	ammp	bzip2	bzip2	vortex	wupwise	equake	bzip2	gzip	gzip	equake	ammp
+hungarian	21.68200
+local	22.79210	22.0838	23.6418
+ga	23.04402	22.594722	23.607306
+random	23.85317	22.4281	24.3843
+deny_random	21.81316	21.7792	21.8737
+deny_life	22.12889	21.9309	22.1955
+
+workload		gap	twolf	vpr	mesa	vpr	equake	gap	gap	parser	vortex	gap	bzip2	vpr	gcc	gap	gap
+hungarian	18.09009
+local	18.70649	18.318	19.2555
+ga	18.88184	18.674678	19.490645
+random	19.02543	18.5556	19.4772
+deny_random	18.20989	18.1734	18.2233
+deny_life	18.36468	18.2849	18.427

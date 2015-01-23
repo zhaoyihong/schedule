@@ -1,0 +1,166 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CXX	Makefile	/^CXX = g++$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS = -Wall -I. ${CFLAGS} -std=c++0x #-pg # -ggdb3 -DDEBUG$/;"	m
+CXXLIBFLAGS	Makefile	/^CXXLIBFLAGS = -fPIC -shared$/;"	m
+DIST_INCLUDEDIR	Makefile	/^DIST_INCLUDEDIR = $(INSTALLDIR)\/include\/$/;"	m
+DIST_LIBDIR	Makefile	/^DIST_LIBDIR = $(INSTALLDIR)\/lib\/$/;"	m
+HEADERS	Makefile	/^HEADERS := $(filter-out main.h,$(patsubst %.cpp,%.h,$(SOURCES))) matrix.h matrix.cpp$/;"	m
+INSTALL	Makefile	/^INSTALL = install$/;"	m
+INSTALLDIR	Makefile	/^INSTALLDIR = ..\/build$/;"	m
+LDADD	Makefile	/^LDADD = -lgcov -lgtest -lgtest_main -lpthread$/;"	m
+LDPATH	Makefile	/^LDPATH =$/;"	m
+LIBRARY	Makefile	/^LIBRARY = libmunkres.so$/;"	m
+Matrix	matrix.cpp	/^Matrix<T>::Matrix() {$/;"	f	class:Matrix	signature:()
+Matrix	matrix.cpp	/^Matrix<T>::Matrix(const Matrix<T> &other) {$/;"	f	class:Matrix	signature:(const Matrix<T> &other)
+Matrix	matrix.cpp	/^Matrix<T>::Matrix(const size_t rows, const size_t columns) {$/;"	f	class:Matrix	signature:(const size_t rows, const size_t columns)
+Matrix	matrix.cpp	/^Matrix<T>::Matrix(const std::initializer_list<std::initializer_list<T>> init) {$/;"	f	class:Matrix	signature:(const std::initializer_list<std::initializer_list<T>> init)
+Matrix	matrix.h	/^  Matrix();$/;"	p	class:Matrix	access:public	signature:()
+Matrix	matrix.h	/^  Matrix(const Matrix<T> &other);$/;"	p	class:Matrix	access:public	signature:(const Matrix<T> &other)
+Matrix	matrix.h	/^  Matrix(const size_t rows, const size_t columns);$/;"	p	class:Matrix	access:public	signature:(const size_t rows, const size_t columns)
+Matrix	matrix.h	/^  Matrix(const std::initializer_list<std::initializer_list<T>> init);$/;"	p	class:Matrix	access:public	signature:(const std::initializer_list<std::initializer_list<T>> init)
+Matrix	matrix.h	/^class Matrix {$/;"	c
+Matrix::Matrix	matrix.cpp	/^Matrix<T>::Matrix() {$/;"	f	class:Matrix	signature:()
+Matrix::Matrix	matrix.cpp	/^Matrix<T>::Matrix(const Matrix<T> &other) {$/;"	f	class:Matrix	signature:(const Matrix<T> &other)
+Matrix::Matrix	matrix.cpp	/^Matrix<T>::Matrix(const size_t rows, const size_t columns) {$/;"	f	class:Matrix	signature:(const size_t rows, const size_t columns)
+Matrix::Matrix	matrix.cpp	/^Matrix<T>::Matrix(const std::initializer_list<std::initializer_list<T>> init) {$/;"	f	class:Matrix	signature:(const std::initializer_list<std::initializer_list<T>> init)
+Matrix::Matrix	matrix.h	/^  Matrix();$/;"	p	class:Matrix	access:public	signature:()
+Matrix::Matrix	matrix.h	/^  Matrix(const Matrix<T> &other);$/;"	p	class:Matrix	access:public	signature:(const Matrix<T> &other)
+Matrix::Matrix	matrix.h	/^  Matrix(const size_t rows, const size_t columns);$/;"	p	class:Matrix	access:public	signature:(const size_t rows, const size_t columns)
+Matrix::Matrix	matrix.h	/^  Matrix(const std::initializer_list<std::initializer_list<T>> init);$/;"	p	class:Matrix	access:public	signature:(const std::initializer_list<std::initializer_list<T>> init)
+Matrix::clear	matrix.cpp	/^Matrix<T>::clear() {$/;"	f	class:Matrix	signature:()
+Matrix::clear	matrix.h	/^  void clear();$/;"	p	class:Matrix	access:public	signature:()
+Matrix::columns	matrix.h	/^  inline size_t columns() const {$/;"	f	class:Matrix	access:public	signature:() const
+Matrix::m_columns	matrix.h	/^  size_t m_columns;$/;"	m	class:Matrix	access:private
+Matrix::m_matrix	matrix.h	/^  T **m_matrix;$/;"	m	class:Matrix	access:private
+Matrix::m_rows	matrix.h	/^  size_t m_rows;$/;"	m	class:Matrix	access:private
+Matrix::max	matrix.cpp	/^Matrix<T>::max() const {$/;"	f	class:Matrix	signature:() const
+Matrix::max	matrix.h	/^  const T max() const;$/;"	p	class:Matrix	access:public	signature:() const
+Matrix::min	matrix.cpp	/^Matrix<T>::min() const {$/;"	f	class:Matrix	signature:() const
+Matrix::min	matrix.h	/^  const T min() const;$/;"	p	class:Matrix	access:public	signature:() const
+Matrix::minsize	matrix.h	/^  inline size_t minsize() {$/;"	f	class:Matrix	access:public	signature:()
+Matrix::operator ()	matrix.cpp	/^Matrix<T>::operator ()(const size_t x, const size_t y) const {$/;"	f	class:Matrix	signature:(const size_t x, const size_t y) const
+Matrix::operator ()	matrix.cpp	/^Matrix<T>::operator ()(const size_t x, const size_t y) {$/;"	f	class:Matrix	signature:(const size_t x, const size_t y)
+Matrix::operator ()	matrix.h	/^  T& operator () (const size_t x, const size_t y);$/;"	p	class:Matrix	access:public	signature:(const size_t x, const size_t y)
+Matrix::operator ()	matrix.h	/^  const T& operator () (const size_t x, const size_t y) const;$/;"	p	class:Matrix	access:public	signature:(const size_t x, const size_t y) const
+Matrix::operator =	matrix.cpp	/^Matrix<T>::operator= (const Matrix<T> &other) {$/;"	f	class:Matrix	signature:(const Matrix<T> &other)
+Matrix::operator =	matrix.h	/^  Matrix<T> & operator= (const Matrix<T> &other);$/;"	p	class:Matrix	access:public	signature:(const Matrix<T> &other)
+Matrix::resize	matrix.cpp	/^Matrix<T>::resize(const size_t rows, const size_t columns, const T default_value) {$/;"	f	class:Matrix	signature:(const size_t rows, const size_t columns, const T default_value)
+Matrix::resize	matrix.h	/^  void resize(const size_t rows, const size_t columns, const T default_value = 0);$/;"	p	class:Matrix	access:public	signature:(const size_t rows, const size_t columns, const T default_value = 0)
+Matrix::rows	matrix.h	/^  inline size_t rows() const {$/;"	f	class:Matrix	access:public	signature:() const
+Matrix::~Matrix	matrix.cpp	/^Matrix<T>::~Matrix() {$/;"	f	class:Matrix	signature:()
+Matrix::~Matrix	matrix.h	/^  ~Matrix();$/;"	p	class:Matrix	access:public	signature:()
+Munkres	munkres.h	/^class Munkres {$/;"	c
+Munkres::NORMAL	munkres.h	/^  static constexpr int NORMAL = 0;$/;"	m	class:Munkres	access:private
+Munkres::PRIME	munkres.h	/^  static constexpr int PRIME  = 2;$/;"	m	class:Munkres	access:private
+Munkres::STAR	munkres.h	/^  static constexpr int STAR   = 1;$/;"	m	class:Munkres	access:private
+Munkres::col_mask	munkres.h	/^  bool *col_mask;$/;"	m	class:Munkres	access:private
+Munkres::find_uncovered_in_matrix	munkres.cpp	/^Munkres::find_uncovered_in_matrix(const double item, size_t &row, size_t &col) const {$/;"	f	class:Munkres	signature:(const double item, size_t &row, size_t &col) const
+Munkres::find_uncovered_in_matrix	munkres.h	/^  inline bool find_uncovered_in_matrix(const double, size_t&, size_t&) const;$/;"	p	class:Munkres	access:private	signature:(const double, size_t&, size_t&) const
+Munkres::mask_matrix	munkres.h	/^  Matrix<int> mask_matrix;$/;"	m	class:Munkres	access:private
+Munkres::matrix	munkres.h	/^  Matrix<double> matrix;$/;"	m	class:Munkres	access:private
+Munkres::pair_in_list	munkres.cpp	/^Munkres::pair_in_list(const std::pair<size_t,size_t> &needle, const std::list<std::pair<size_t,size_t> > &haystack) {$/;"	f	class:Munkres	signature:(const std::pair<size_t,size_t> &needle, const std::list<std::pair<size_t,size_t> > &haystack)
+Munkres::pair_in_list	munkres.h	/^  inline bool pair_in_list(const std::pair<size_t,size_t> &, const std::list<std::pair<size_t,size_t> > &);$/;"	p	class:Munkres	access:private	signature:(const std::pair<size_t,size_t> &, const std::list<std::pair<size_t,size_t> > &)
+Munkres::row_mask	munkres.h	/^  bool *row_mask;$/;"	m	class:Munkres	access:private
+Munkres::savecol	munkres.h	/^  size_t saverow, savecol;$/;"	m	class:Munkres	access:private
+Munkres::saverow	munkres.h	/^  size_t saverow, savecol;$/;"	m	class:Munkres	access:private
+Munkres::solve	munkres.cpp	/^Munkres::solve(Matrix<double> &m) {$/;"	f	class:Munkres	signature:(Matrix<double> &m)
+Munkres::solve	munkres.h	/^  void solve(Matrix<double> &m);$/;"	p	class:Munkres	access:public	signature:(Matrix<double> &m)
+Munkres::step1	munkres.cpp	/^Munkres::step1() {$/;"	f	class:Munkres	signature:()
+Munkres::step1	munkres.h	/^  int step1();$/;"	p	class:Munkres	access:private	signature:()
+Munkres::step2	munkres.cpp	/^Munkres::step2() {$/;"	f	class:Munkres	signature:()
+Munkres::step2	munkres.h	/^  int step2();$/;"	p	class:Munkres	access:private	signature:()
+Munkres::step3	munkres.cpp	/^Munkres::step3() {$/;"	f	class:Munkres	signature:()
+Munkres::step3	munkres.h	/^  int step3();$/;"	p	class:Munkres	access:private	signature:()
+Munkres::step4	munkres.cpp	/^Munkres::step4() {$/;"	f	class:Munkres	signature:()
+Munkres::step4	munkres.h	/^  int step4();$/;"	p	class:Munkres	access:private	signature:()
+Munkres::step5	munkres.cpp	/^Munkres::step5() {$/;"	f	class:Munkres	signature:()
+Munkres::step5	munkres.h	/^  int step5();$/;"	p	class:Munkres	access:private	signature:()
+Munkres::step6	munkres.h	/^  int step6();$/;"	p	class:Munkres	access:private	signature:()
+NORMAL	munkres.h	/^  static constexpr int NORMAL = 0;$/;"	m	class:Munkres	access:private
+OBJECTS	Makefile	/^OBJECTS := $(patsubst %.cpp,%.o,$(SOURCES))$/;"	m
+PRIME	munkres.h	/^  static constexpr int PRIME  = 2;$/;"	m	class:Munkres	access:private
+SOURCES	Makefile	/^SOURCES = munkres.cpp$/;"	m
+STAR	munkres.h	/^  static constexpr int STAR   = 1;$/;"	m	class:Munkres	access:private
+UNITTESTS	Makefile	/^UNITTESTS = ..\/tests\/munkrestest.cpp \\$/;"	m
+_MATRIX_H_	matrix.h	20;"	d
+_MUNKRES_ADAPTERS_BOOST_MATRIX_H_	adapters/boost_matrix.h	20;"	d
+_MUNKRES_ADAPTERS_RAW_2D_ARRAY_H_	adapters/raw_2d_array.h	20;"	d
+_MUNKRES_ADAPTERS_STD_2D_ARRAY_H_	adapters/std_2d_array.h	20;"	d
+_MUNKRES_ADAPTERS_STD_2D_VECTOR_H_	adapters/std_2d_vector.h	20;"	d
+_MUNKRES_H_	munkres.h	20;"	d
+clear	matrix.cpp	/^Matrix<T>::clear() {$/;"	f	class:Matrix	signature:()
+clear	matrix.h	/^  void clear();$/;"	p	class:Matrix	access:public	signature:()
+col_mask	munkres.h	/^  bool *col_mask;$/;"	m	class:Munkres	access:private
+columns	matrix.h	/^  inline size_t columns() const {$/;"	f	class:Matrix	access:public	signature:() const
+convert_boost_matrix_to_munkres_matrix	adapters/boost_matrix.cpp	/^Matrix <T> convert_boost_matrix_to_munkres_matrix (const boost::numeric::ublas::matrix <T> & boost_matrix)$/;"	f	signature:(const boost::numeric::ublas::matrix <T> & boost_matrix)
+convert_boost_matrix_to_munkres_matrix	adapters/boost_matrix.h	/^Matrix <T> convert_boost_matrix_to_munkres_matrix (const boost::numeric::ublas::matrix <T> &);$/;"	p	signature:(const boost::numeric::ublas::matrix <T> &)
+convert_raw_2d_array_to_munkres_matrix	adapters/raw_2d_array.cpp	/^Matrix <T> convert_raw_2d_array_to_munkres_matrix (const T array [dimention][dimention])$/;"	f	signature:(const T array [dimention][dimention])
+convert_raw_2d_array_to_munkres_matrix	adapters/raw_2d_array.h	/^Matrix <T> convert_raw_2d_array_to_munkres_matrix (const T array [dimention][dimention]);$/;"	p	signature:(const T array [dimention][dimention])
+convert_std_2d_array_to_munkres_matrix	adapters/std_2d_array.cpp	/^Matrix <T> convert_std_2d_array_to_munkres_matrix (const std::array <std::array <T, dimention>, dimention> & array)$/;"	f	signature:(const std::array <std::array <T, dimention>, dimention> & array)
+convert_std_2d_array_to_munkres_matrix	adapters/std_2d_array.h	/^Matrix <T> convert_std_2d_array_to_munkres_matrix (const std::array <std::array <T, dimention>, dimention> & array);$/;"	p	signature:(const std::array <std::array <T, dimention>, dimention> & array)
+convert_std_2d_vector_to_munkres_matrix	adapters/std_2d_vector.cpp	/^Matrix <T> convert_std_2d_vector_to_munkres_matrix (const std::vector <std::vector <T> > & vector)$/;"	f	signature:(const std::vector <std::vector <T> > & vector)
+convert_std_2d_vector_to_munkres_matrix	adapters/std_2d_vector.h	/^Matrix <T> convert_std_2d_vector_to_munkres_matrix (const std::vector <std::vector <T> > & vector);$/;"	p	signature:(const std::vector <std::vector <T> > & vector)
+fill_boost_matrix_from_munkres_matrix	adapters/boost_matrix.cpp	/^void fill_boost_matrix_from_munkres_matrix (boost::numeric::ublas::matrix <T> & boost_matrix, const Matrix <T> & matrix)$/;"	f	signature:(boost::numeric::ublas::matrix <T> & boost_matrix, const Matrix <T> & matrix)
+fill_boost_matrix_from_munkres_matrix	adapters/boost_matrix.h	/^void fill_boost_matrix_from_munkres_matrix (boost::numeric::ublas::matrix <T> & boost_matrix, const Matrix <T> &);$/;"	p	signature:(boost::numeric::ublas::matrix <T> & boost_matrix, const Matrix <T> &)
+fill_raw_2d_array_from_munkres_matrix	adapters/raw_2d_array.cpp	/^void fill_raw_2d_array_from_munkres_matrix (T array [dimention][dimention], const Matrix <T> & matrix)$/;"	f	signature:(T array [dimention][dimention], const Matrix <T> & matrix)
+fill_raw_2d_array_from_munkres_matrix	adapters/raw_2d_array.h	/^void fill_raw_2d_array_from_munkres_matrix (T array [dimention][dimention], const Matrix <T> & matrix);$/;"	p	signature:(T array [dimention][dimention], const Matrix <T> & matrix)
+fill_std_2d_array_from_munkres_matrix	adapters/std_2d_array.cpp	/^void fill_std_2d_array_from_munkres_matrix (std::array <std::array <T, dimention>, dimention> & array, const Matrix <T> & matrix)$/;"	f	signature:(std::array <std::array <T, dimention>, dimention> & array, const Matrix <T> & matrix)
+fill_std_2d_array_from_munkres_matrix	adapters/std_2d_array.h	/^void fill_std_2d_array_from_munkres_matrix (std::array <std::array <T, dimention>, dimention> & array, const Matrix <T> & matrix);$/;"	p	signature:(std::array <std::array <T, dimention>, dimention> & array, const Matrix <T> & matrix)
+fill_std_2d_vector_from_munkres_matrix	adapters/std_2d_vector.cpp	/^void fill_std_2d_vector_from_munkres_matrix (std::vector <std::vector <T> > & vector, const Matrix <T> & matrix)$/;"	f	signature:(std::vector <std::vector <T> > & vector, const Matrix <T> & matrix)
+fill_std_2d_vector_from_munkres_matrix	adapters/std_2d_vector.h	/^void fill_std_2d_vector_from_munkres_matrix (std::vector <std::vector <T> > & vector, const Matrix <T> & matrix);$/;"	p	signature:(std::vector <std::vector <T> > & vector, const Matrix <T> & matrix)
+find_uncovered_in_matrix	munkres.cpp	/^Munkres::find_uncovered_in_matrix(const double item, size_t &row, size_t &col) const {$/;"	f	class:Munkres	signature:(const double item, size_t &row, size_t &col) const
+find_uncovered_in_matrix	munkres.h	/^  inline bool find_uncovered_in_matrix(const double, size_t&, size_t&) const;$/;"	p	class:Munkres	access:private	signature:(const double, size_t&, size_t&) const
+m_columns	matrix.h	/^  size_t m_columns;$/;"	m	class:Matrix	access:private
+m_matrix	matrix.h	/^  T **m_matrix;$/;"	m	class:Matrix	access:private
+m_rows	matrix.h	/^  size_t m_rows;$/;"	m	class:Matrix	access:private
+mask_matrix	munkres.h	/^  Matrix<int> mask_matrix;$/;"	m	class:Munkres	access:private
+matrix	munkres.h	/^  Matrix<double> matrix;$/;"	m	class:Munkres	access:private
+max	matrix.cpp	/^Matrix<T>::max() const {$/;"	f	class:Matrix	signature:() const
+max	matrix.h	/^  const T max() const;$/;"	p	class:Matrix	access:public	signature:() const
+min	matrix.cpp	/^Matrix<T>::min() const {$/;"	f	class:Matrix	signature:() const
+min	matrix.h	/^  const T min() const;$/;"	p	class:Matrix	access:public	signature:() const
+minimize_along_direction	munkres.cpp	/^minimize_along_direction(Matrix<double> &matrix, const bool over_columns) {$/;"	f	signature:(Matrix<double> &matrix, const bool over_columns)
+minsize	matrix.h	/^  inline size_t minsize() {$/;"	f	class:Matrix	access:public	signature:()
+operator ()	matrix.cpp	/^Matrix<T>::operator ()(const size_t x, const size_t y) const {$/;"	f	class:Matrix	signature:(const size_t x, const size_t y) const
+operator ()	matrix.cpp	/^Matrix<T>::operator ()(const size_t x, const size_t y) {$/;"	f	class:Matrix	signature:(const size_t x, const size_t y)
+operator ()	matrix.h	/^  T& operator () (const size_t x, const size_t y);$/;"	p	class:Matrix	access:public	signature:(const size_t x, const size_t y)
+operator ()	matrix.h	/^  const T& operator () (const size_t x, const size_t y) const;$/;"	p	class:Matrix	access:public	signature:(const size_t x, const size_t y) const
+operator =	matrix.cpp	/^Matrix<T>::operator= (const Matrix<T> &other) {$/;"	f	class:Matrix	signature:(const Matrix<T> &other)
+operator =	matrix.h	/^  Matrix<T> & operator= (const Matrix<T> &other);$/;"	p	class:Matrix	access:public	signature:(const Matrix<T> &other)
+pair_in_list	munkres.cpp	/^Munkres::pair_in_list(const std::pair<size_t,size_t> &needle, const std::list<std::pair<size_t,size_t> > &haystack) {$/;"	f	class:Munkres	signature:(const std::pair<size_t,size_t> &needle, const std::list<std::pair<size_t,size_t> > &haystack)
+pair_in_list	munkres.h	/^  inline bool pair_in_list(const std::pair<size_t,size_t> &, const std::list<std::pair<size_t,size_t> > &);$/;"	p	class:Munkres	access:private	signature:(const std::pair<size_t,size_t> &, const std::list<std::pair<size_t,size_t> > &)
+replace_infinites	munkres.cpp	/^replace_infinites(Matrix<double> &matrix) {$/;"	f	signature:(Matrix<double> &matrix)
+resize	matrix.cpp	/^Matrix<T>::resize(const size_t rows, const size_t columns, const T default_value) {$/;"	f	class:Matrix	signature:(const size_t rows, const size_t columns, const T default_value)
+resize	matrix.h	/^  void resize(const size_t rows, const size_t columns, const T default_value = 0);$/;"	p	class:Matrix	access:public	signature:(const size_t rows, const size_t columns, const T default_value = 0)
+row_mask	munkres.h	/^  bool *row_mask;$/;"	m	class:Munkres	access:private
+rows	matrix.h	/^  inline size_t rows() const {$/;"	f	class:Matrix	access:public	signature:() const
+savecol	munkres.h	/^  size_t saverow, savecol;$/;"	m	class:Munkres	access:private
+saverow	munkres.h	/^  size_t saverow, savecol;$/;"	m	class:Munkres	access:private
+solve	adapters/boost_matrix.cpp	/^void solve(boost::numeric::ublas::matrix <double> & boost_matrix)$/;"	f	signature:(boost::numeric::ublas::matrix <double> & boost_matrix)
+solve	adapters/boost_matrix.h	/^void solve(boost::numeric::ublas::matrix <double> &);$/;"	p	signature:(boost::numeric::ublas::matrix <double> &)
+solve	adapters/raw_2d_array.cpp	/^void solve(double m [dimension][dimension])$/;"	f	signature:(double m [dimension][dimension])
+solve	adapters/raw_2d_array.h	/^void solve(double m [dimension][dimension]);$/;"	p	signature:(double m [dimension][dimension])
+solve	adapters/std_2d_array.cpp	/^void solve(std::array <std::array <double, dimension>, dimension> &m)$/;"	f	signature:(std::array <std::array <double, dimension>, dimension> &m)
+solve	adapters/std_2d_array.h	/^void solve(std::array <std::array <double, dimension>, dimension> &m);$/;"	p	signature:(std::array <std::array <double, dimension>, dimension> &m)
+solve	adapters/std_2d_vector.cpp	/^void solve(std::vector <std::vector <double> > &m)$/;"	f	signature:(std::vector <std::vector <double> > &m)
+solve	adapters/std_2d_vector.h	/^void solve(std::vector <std::vector <double> > &m);$/;"	p	signature:(std::vector <std::vector <double> > &m)
+solve	munkres.cpp	/^Munkres::solve(Matrix<double> &m) {$/;"	f	class:Munkres	signature:(Matrix<double> &m)
+solve	munkres.h	/^  void solve(Matrix<double> &m);$/;"	p	class:Munkres	access:public	signature:(Matrix<double> &m)
+step1	munkres.cpp	/^Munkres::step1() {$/;"	f	class:Munkres	signature:()
+step1	munkres.h	/^  int step1();$/;"	p	class:Munkres	access:private	signature:()
+step2	munkres.cpp	/^Munkres::step2() {$/;"	f	class:Munkres	signature:()
+step2	munkres.h	/^  int step2();$/;"	p	class:Munkres	access:private	signature:()
+step3	munkres.cpp	/^Munkres::step3() {$/;"	f	class:Munkres	signature:()
+step3	munkres.h	/^  int step3();$/;"	p	class:Munkres	access:private	signature:()
+step4	munkres.cpp	/^Munkres::step4() {$/;"	f	class:Munkres	signature:()
+step4	munkres.h	/^  int step4();$/;"	p	class:Munkres	access:private	signature:()
+step5	munkres.cpp	/^Munkres::step5() {$/;"	f	class:Munkres	signature:()
+step5	munkres.h	/^  int step5();$/;"	p	class:Munkres	access:private	signature:()
+step6	munkres.h	/^  int step6();$/;"	p	class:Munkres	access:private	signature:()
+~Matrix	matrix.cpp	/^Matrix<T>::~Matrix() {$/;"	f	class:Matrix	signature:()
+~Matrix	matrix.h	/^  ~Matrix();$/;"	p	class:Matrix	access:public	signature:()

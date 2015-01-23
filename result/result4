@@ -1,0 +1,63 @@
+work load: gzip.mips twolf.mips twolf.mips gap.mips
+hungry:4.799250
+local: 4.90620,min:4.81055,max:5.01944
+ga 4.80392,min:4.799251,max:4.814875
+random 4.87514,min:4.79925,max:4.97217
+deny_random 4.79925,min:4.79925,max:4.79925
+deny_life 4.81844,min:4.80731,max:4.82335
+
+work load: mesa.mips wupwise.mips crafty.mips bzip2.mips
+hungry:4.535754
+local: 4.61253,min:4.53604,max:4.69129
+ga 4.54513,min:4.539552,max:4.549773
+random 4.58223,min:4.53604,max:4.68529
+deny_random 4.53604,min:4.53604,max:4.53604
+deny_life 4.56808,min:4.53604,max:4.59194
+
+work load: gcc.mips gzip.mips mcf.mips bzip2.mips
+hungry:7.136523
+local: 7.23248,min:7.14083,max:7.30355
+ga 7.24273,min:7.186802,max:7.275547
+random 7.23389,min:7.14083,max:7.3524
+deny_random 7.18998,min:7.13655,max:7.25399
+deny_life 7.21508,min:7.21506,max:7.21513
+
+work load: swim.mips twolf.mips bzip2.mips parser.mips
+hungry:4.467313
+local: 4.64800,min:4.52031,max:4.74884
+ga 4.50259,min:4.478710,max:4.542038
+random 4.54846,min:4.51628,max:4.59912
+deny_random 4.49510,min:4.4951,max:4.4951
+deny_life 4.56767,min:4.5126,max:4.60267
+
+work load: mesa.mips gcc.mips vortex.mips vortex.mips
+hungry:5.175888
+local: 5.41427,min:5.31412,max:5.48713
+ga 5.18195,min:5.179721,max:5.184532
+random 5.24501,min:5.18231,max:5.34054
+deny_random 5.18364,min:5.17972,max:5.19677
+deny_life 5.19969,min:5.17972,max:5.21536
+
+work load: vpr.mips mesa.mips bzip2.mips parser.mips
+hungry:4.235670
+local: 4.34324,min:4.29788,max:4.36275
+ga 4.26167,min:4.247197,max:4.274406
+random 4.28515,min:4.24285,max:4.32485
+deny_random 4.23567,min:4.23567,max:4.23567
+deny_life 4.27796,min:4.26448,max:4.28285
+
+work load: gap.mips swim.mips gcc.mips crafty.mips
+hungry:5.505754
+local: 5.53997,min:5.51471,max:5.57655
+ga 5.52265,min:5.519723,max:5.534225
+random 5.54124,min:5.50913,max:5.58894
+deny_random 5.51716,min:5.50868,max:5.53354
+deny_life 5.53415,min:5.51881,max:5.55436
+
+work load: crafty.mips equake.mips gcc.mips parser.mips
+hungry:4.424424
+local: 4.51985,min:4.44497,max:4.63869
+ga 4.44692,min:4.424423,max:4.473437
+random 4.51429,min:4.43091,max:4.64788
+deny_random 4.42442,min:4.42442,max:4.42442
+deny_life 4.49580,min:4.45734,max:4.5854

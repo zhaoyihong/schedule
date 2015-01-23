@@ -1,0 +1,55 @@
+workload		gzip	twolf	twolf	gap
+local	0.0222847
+ga	0.000973069
+random	0.0158129
+deny_random	0
+deny_life	0.00399854
+	
+workload		mesa	wupwise	crafty	bzip2
+local	0.0169268
+ga	0.00206713
+random	0.0102466
+deny_random	6.30546e-05
+deny_life	0.00712693
+	
+workload		gcc	gzip	mcf	bzip2
+local	0.0134459
+ga	0.0148822
+random	0.0136435
+deny_random	0.00749062
+deny_life	0.0110077
+	
+workload		swim	twolf	bzip2	parser
+local	0.0404465
+ga	0.00789669
+random	0.0181646
+deny_random	0.00622007
+deny_life	0.0224647
+	
+workload		mesa	gcc	vortex	vortex
+local	0.0460563
+ga	0.0011712
+random	0.0133546
+deny_random	0.00149771
+deny_life	0.00459863
+	
+workload		vpr	mesa	bzip2	parser
+local	0.0253962
+ga	0.00613834
+random	0.0116817
+deny_random	0
+deny_life	0.00998425
+	
+workload		gap	swim	gcc	crafty
+local	0.00621459
+ga	0.00306879
+random	0.00644526
+deny_random	0.00207165
+deny_life	0.00515751
+	
+workload		crafty	equake	gcc	parser
+local	0.021568
+ga	0.0050845
+random	0.0203113
+deny_random	-9.04072e-07
+deny_life	0.0161323

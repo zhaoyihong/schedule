@@ -1,0 +1,64 @@
+
+workload		bzip2	parser	gcc	ammp	mesa	gcc	bzip2	crafty
+hungarian	12.428938
+local	13.16911	12.4947	13.5642
+ga	12.83119	12.540998	13.232837
+random	13.27680	12.4722	13.8323
+deny_random	12.53788	12.4562	12.6
+deny_life	12.68548	12.5426	12.8172
+
+workload		wupwise	vortex	mcf	swim	swim	wupwise	bzip2	swim
+hungarian	9.345604
+local	9.71835	9.54328	10.6073
+ga	9.65856	9.423552	9.829782
+random	9.73585	9.52467	10.1595
+deny_random	9.45038	9.40928	9.55718
+deny_life	9.50006	9.43461	9.62321
+
+workload		gap	mesa	twolf	gap	mesa	wupwise	parser	vortex
+hungarian	7.780198
+local	8.02485	7.81979	8.22614
+ga	7.95293	7.842885	8.023864
+random	8.12522	7.93586	8.18013
+deny_random	7.81854	7.81596	7.81897
+deny_life	7.84989	7.83016	7.88944
+
+workload		twolf	equake	bzip2	equake	gcc	vpr	crafty	gcc
+hungarian	11.312739
+local	12.03836	11.6369	12.777
+ga	11.65454	11.414605	11.933605
+random	12.16575	11.789	12.5967
+deny_random	11.35176	11.3514	11.3574
+deny_life	11.68485	11.5627	11.8499
+
+workload		mesa	mesa	mesa	vpr	vortex	mcf	wupwise	crafty
+hungarian	7.625631
+local	7.81167	7.69967	7.89468
+ga	7.78357	7.677024	7.875282
+random	7.81096	7.67653	7.87083
+deny_random	7.65836	7.65154	7.66104
+deny_life	7.69032	7.67218	7.71625
+
+workload		vortex	bzip2	bzip2	bzip2	vpr	mcf	crafty	vortex
+hungarian	11.990731
+local	12.84220	12.5703	13.1352
+ga	12.37990	12.083032	12.806305
+random	12.78096	12.3744	13.1195
+deny_random	12.02909	12.0175	12.0301
+deny_life	12.20235	12.1273	12.2649
+
+workload		vpr	ammp	mcf	swim	wupwise	bzip2	bzip2	twolf
+hungarian	9.695579
+local	10.48186	9.81008	11.05
+ga	9.97550	9.765807	10.248360
+random	10.35010	9.96859	10.6706
+deny_random	9.71535	9.71535	9.71535
+deny_life	9.91702	9.77815	10.0459
+
+workload		parser	vortex	crafty	gap	gcc	equake	mcf	swim
+hungarian	9.247958
+local	9.62665	9.45455	9.83382
+ga	9.64624	9.412361	9.842892
+random	9.76010	9.52481	9.94508
+deny_random	9.34597	9.34597	9.34597
+deny_life	9.56181	9.4223	9.74465

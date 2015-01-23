@@ -1,0 +1,167 @@
+
+ generation  best  average  standard 
+number        value fitness  deviation 
+
+Loop 1
+
+All population
+genes:2341	fitness:18.957010
+genes:1234	fitness:19.030030
+genes:4321	fitness:19.384150
+genes:4132	fitness:19.648650
+Best member:
+2	3	4	1	Best fitness = 18.957010,Reall cost:18.540110
+
+Loop 2
+
+All population
+genes:2134	fitness:19.374600
+genes:1342	fitness:18.779150
+genes:1423	fitness:18.942160
+genes:3241	fitness:19.502570
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.388320
+
+Loop 3
+
+All population
+genes:1243	fitness:19.037950
+genes:1342	fitness:18.779150
+genes:3421	fitness:19.406780
+genes:2413	fitness:19.220580
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.310690
+
+Loop 4
+
+All population
+genes:4321	fitness:19.384150
+genes:2431	fitness:18.959010
+genes:1342	fitness:18.779150
+genes:1234	fitness:19.030030
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:17.922380
+
+Loop 5
+
+All population
+genes:3421	fitness:19.406780
+genes:4321	fitness:19.384150
+genes:1342	fitness:18.779150
+genes:3412	fitness:19.507340
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:17.963170
+
+Loop 6
+
+All population
+genes:3421	fitness:19.406780
+genes:1324	fitness:18.932240
+genes:2341	fitness:18.957010
+genes:1342	fitness:18.779150
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.571570
+
+Loop 7
+
+All population
+genes:1234	fitness:19.030030
+genes:4321	fitness:19.384150
+genes:1342	fitness:18.779150
+genes:1324	fitness:18.932240
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.404290
+
+Loop 8
+
+All population
+genes:3124	fitness:19.822370
+genes:4321	fitness:19.384150
+genes:2143	fitness:19.382520
+genes:1342	fitness:18.779150
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.457600
+
+Loop 9
+
+All population
+genes:1234	fitness:19.030030
+genes:4231	fitness:19.481940
+genes:1234	fitness:19.030030
+genes:1342	fitness:18.779150
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.584110
+
+Loop 10
+
+All population
+genes:1342	fitness:18.779150
+genes:1243	fitness:19.037950
+genes:2431	fitness:18.959010
+genes:2431	fitness:18.959010
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.548500
+
+Loop 11
+
+All population
+genes:1342	fitness:18.779150
+genes:3421	fitness:19.406780
+genes:1423	fitness:18.942160
+genes:2341	fitness:18.957010
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.429080
+
+Loop 12
+
+All population
+genes:2431	fitness:18.959010
+genes:1342	fitness:18.779150
+genes:3241	fitness:19.502570
+genes:2431	fitness:18.959010
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.562580
+
+Loop 13
+
+All population
+genes:4231	fitness:19.481940
+genes:2314	fitness:19.210660
+genes:2341	fitness:18.957010
+genes:1342	fitness:18.779150
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:18.269920
+
+Loop 14
+
+All population
+genes:2134	fitness:19.374600
+genes:1342	fitness:18.779150
+genes:1243	fitness:19.037950
+genes:3421	fitness:19.406780
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:17.519150
+
+Loop 15
+
+All population
+genes:1423	fitness:18.942160
+genes:2431	fitness:18.959010
+genes:1432	fitness:18.781150
+genes:1342	fitness:18.779150
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:16.770840
+
+Loop 16
+
+All population
+genes:1342	fitness:18.779150
+genes:3412	fitness:19.507340
+genes:4312	fitness:19.484710
+genes:1234	fitness:19.030030
+Best member:
+1	3	4	2	Best fitness = 18.779150,Reall cost:16.793050
+
+
+ Simulation completed
+Sum of fitness  = 290.035360

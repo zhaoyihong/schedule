@@ -1,0 +1,63 @@
+work load: bzip2.mips swim.mips crafty.mips bzip2.mips vortex.mips gap.mips vortex.mips gcc.mips mesa.mips gcc.mips crafty.mips wupwise.mips wupwise.mips wupwise.mips equake.mips bzip2.mips
+hungry:20.91755
+local: 21.81701,min:21.3419,max:22.5822
+ga 22.09336,min:21.542224,max:22.808146
+random 22.71217,min:21.7869,max:23.1592
+deny_random 21.07559,min:21.0652,max:21.0916
+deny_life 21.30470,min:21.2769,max:21.3451
+
+work load: vortex.mips gcc.mips wupwise.mips twolf.mips ammp.mips mesa.mips gap.mips twolf.mips vpr.mips mesa.mips wupwise.mips equake.mips mcf.mips wupwise.mips vortex.mips gap.mips
+hungry:15.600349
+local: 15.97469,min:15.7875,max:16.201
+ga 16.12389,min:15.850197,max:16.325270
+random 16.29014,min:15.9195,max:16.609
+deny_random 15.67246,min:15.671,max:15.7003
+deny_life 15.90599,min:15.7548,max:16.0577
+
+work load: gcc.mips equake.mips ammp.mips vortex.mips wupwise.mips gzip.mips parser.mips swim.mips swim.mips mesa.mips twolf.mips vortex.mips twolf.mips gcc.mips vpr.mips equake.mips
+hungry:17.98881
+local: 18.63054,min:18.2189,max:18.9185
+ga 18.80183,min:18.416061,max:19.171527
+random 19.15244,min:18.692,max:19.5776
+deny_random 18.09022,min:18.0698,max:18.1264
+deny_life 18.35196,min:18.2333,max:18.4355
+
+work load: gap.mips vortex.mips gap.mips wupwise.mips vpr.mips swim.mips vpr.mips parser.mips wupwise.mips wupwise.mips bzip2.mips mcf.mips mcf.mips equake.mips mcf.mips swim.mips
+hungry:15.283886
+local: 15.83212,min:15.6473,max:16.0841
+ga 15.95907,min:15.609709,max:16.201971
+random 16.16585,min:15.8478,max:16.5154
+deny_random 15.34161,min:15.3215,max:15.357
+deny_life 15.50107,min:15.4091,max:15.596
+
+work load: mesa.mips crafty.mips twolf.mips twolf.mips crafty.mips bzip2.mips wupwise.mips ammp.mips twolf.mips crafty.mips vpr.mips vpr.mips ammp.mips gzip.mips crafty.mips ammp.mips
+hungry:16.92743
+local: 17.47260,min:17.2364,max:17.8116
+ga 17.59313,min:17.369181,max:18.132914
+random 17.90876,min:17.4084,max:18.4317
+deny_random 16.98996,min:16.9801,max:16.9975
+deny_life 17.18991,min:17.0969,max:17.2167
+
+work load: gcc.mips crafty.mips parser.mips bzip2.mips vpr.mips bzip2.mips gcc.mips equake.mips gzip.mips vpr.mips gap.mips vpr.mips mesa.mips wupwise.mips gcc.mips vpr.mips
+hungry:21.03581
+local: 21.98242,min:21.5733,max:22.607
+ga 22.43809,min:21.984953,max:23.097223
+random 23.10473,min:22.4974,max:23.6746
+deny_random 21.10613,min:21.0813,max:21.1264
+deny_life 21.53137,min:21.3761,max:21.6976
+
+work load: twolf.mips vortex.mips crafty.mips bzip2.mips equake.mips ammp.mips bzip2.mips bzip2.mips vortex.mips wupwise.mips equake.mips bzip2.mips gzip.mips gzip.mips equake.mips ammp.mips
+hungry:21.68200
+local: 22.79210,min:22.0838,max:23.6418
+ga 23.04402,min:22.594722,max:23.607306
+random 23.85317,min:22.4281,max:24.3843
+deny_random 21.81316,min:21.7792,max:21.8737
+deny_life 22.12889,min:21.9309,max:22.1955
+
+work load: gap.mips twolf.mips vpr.mips mesa.mips vpr.mips equake.mips gap.mips gap.mips parser.mips vortex.mips gap.mips bzip2.mips vpr.mips gcc.mips gap.mips gap.mips
+hungry:18.09009
+local: 18.70649,min:18.318,max:19.2555
+ga 18.88184,min:18.674678,max:19.490645
+random 19.02543,min:18.5556,max:19.4772
+deny_random 18.20989,min:18.1734,max:18.2233
+deny_life 18.36468,min:18.2849,max:18.427
