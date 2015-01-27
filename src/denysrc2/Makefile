@@ -1,6 +1,6 @@
 .PHONY:clean test
 CC=g++
-CC_FLAGS=-Wall -g --std=c++11 -L../munkres-cpp-master/src -lmunkres -I../munkres-cpp-master/src
+CC_FLAGS=-Wall -g --std=c++11
 BIN=deny
 SRC=deny.cpp
 

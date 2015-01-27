@@ -42,15 +42,14 @@ private:
 	vector<int> schedule_now; //当前的调度方案
 
     void init(); //初始化
-//	void initSchedule(); //初始化调度方案
-//	void initData();  //初始化调度方案对应开销
 	double getValue(int cpu ,int app); // get value from file
 	double total_cost;	//总的开销
 	double min_cost; //当前调度方案的开销
 	void stage(int loop);//执行一轮循环
-//	double useHungarian(vector<int> &);
 	const int LIFE_MAX = total;
-//	double useHungarian_withlife(vector<int>&);
+    void get_schedule_use_probability(vector<int>& choosen);//依赖概率的调度方法
+
+
 public :
 	//得到history中	最近的一次 app在 core上的开销
 	double getLastCost(int app,int core);	

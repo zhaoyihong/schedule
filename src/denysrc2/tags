@@ -1,0 +1,99 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BIN	Makefile	/^BIN=deny$/;"	m	language:Make
+CC	Makefile	/^CC=g++$/;"	m	language:Make
+CC_FLAGS	Makefile	/^CC_FLAGS=-Wall -g --std=c++11$/;"	m	language:Make
+DENY_H	deny.h	3;"	d	language:C++
+Deny	deny.cpp	/^Deny::Deny(int total,char *path,int maxloop):total(total),path(path),maxloop(maxloop){$/;"	f	language:C++	class:Deny	signature:(int total,char *path,int maxloop)
+Deny	deny.h	/^	Deny(int total,char *path,int maxloop);$/;"	p	language:C++	class:Deny	access:public	signature:(int total,char *path,int maxloop)
+Deny	deny.h	/^class Deny$/;"	c	language:C++
+Deny::Deny	deny.cpp	/^Deny::Deny(int total,char *path,int maxloop):total(total),path(path),maxloop(maxloop){$/;"	f	language:C++	class:Deny	signature:(int total,char *path,int maxloop)
+Deny::Deny	deny.h	/^	Deny(int total,char *path,int maxloop);$/;"	p	language:C++	class:Deny	access:public	signature:(int total,char *path,int maxloop)
+Deny::LIFE_MAX	deny.h	/^	const int LIFE_MAX = total;$/;"	m	language:C++	class:Deny	access:private
+Deny::chengji	deny.h	/^	vector<vector<int> > chengji; \/\/app在各个内核上的成绩 	$/;"	m	language:C++	class:Deny	access:private
+Deny::cost_history	deny.h	/^	vector<vector<double> > cost_history;  \/\/存放调度方案对应的开销     $/;"	m	language:C++	class:Deny	access:private
+Deny::getLastCost	deny.cpp	/^double Deny::getLastCost(int app,int core)$/;"	f	language:C++	class:Deny	signature:(int app,int core)
+Deny::getLastCost	deny.h	/^	double getLastCost(int app,int core);	$/;"	p	language:C++	class:Deny	access:public	signature:(int app,int core)
+Deny::getValue	deny.cpp	/^double Deny::getValue(int cpu,int app)$/;"	f	language:C++	class:Deny	signature:(int cpu,int app)
+Deny::getValue	deny.h	/^	double getValue(int cpu ,int app); \/\/ get value from file$/;"	p	language:C++	class:Deny	access:private	signature:(int cpu ,int app)
+Deny::get_schedule_use_probability	deny.h	/^    void get_schedule_use_probability(vector<int>& choosen);\/\/依赖概率的调度方法$/;"	p	language:C++	class:Deny	access:private	signature:(vector<int>& choosen)
+Deny::init	deny.cpp	/^void Deny::init()$/;"	f	language:C++	class:Deny	signature:()
+Deny::init	deny.h	/^    void init(); \/\/初始化$/;"	p	language:C++	class:Deny	access:private	signature:()
+Deny::last_cost	deny.h	/^	vector<vector<double> > last_cost; \/\/app在各个内核上最进的一次开销$/;"	m	language:C++	class:Deny	access:private
+Deny::life	deny.h	/^	vector<vector<int> > life; \/\/app在各个内核上的cost的有效性	$/;"	m	language:C++	class:Deny	access:private
+Deny::loop	deny.h	/^	int loop;  \/\/local search loop数$/;"	m	language:C++	class:Deny	access:private
+Deny::maxloop	deny.h	/^	int maxloop;  \/\/最大loop数$/;"	m	language:C++	class:Deny	access:private
+Deny::min_cost	deny.h	/^	double min_cost; \/\/当前调度方案的开销$/;"	m	language:C++	class:Deny	access:private
+Deny::path	deny.h	/^	char *path; \/\/matrix文件存放路径$/;"	m	language:C++	class:Deny	access:private
+Deny::printChengji	deny.cpp	/^void Deny::printChengji()$/;"	f	language:C++	class:Deny	signature:()
+Deny::printChengji	deny.h	/^	void printChengji(); \/\/打印last_cost 和chengji 矩阵$/;"	p	language:C++	class:Deny	access:public	signature:()
+Deny::printCurrentSchedule	deny.cpp	/^void Deny::printCurrentSchedule()$/;"	f	language:C++	class:Deny	signature:()
+Deny::printCurrentSchedule	deny.h	/^	void printCurrentSchedule(); \/\/打印当前调度方案$/;"	p	language:C++	class:Deny	access:public	signature:()
+Deny::printHistory	deny.cpp	/^void Deny::printHistory()$/;"	f	language:C++	class:Deny	signature:()
+Deny::printHistory	deny.h	/^	void printHistory();$/;"	p	language:C++	class:Deny	access:public	signature:()
+Deny::printResult	deny.cpp	/^void Deny::printResult()$/;"	f	language:C++	class:Deny	signature:()
+Deny::printResult	deny.h	/^	void printResult(); \/\/打印结果$/;"	p	language:C++	class:Deny	access:public	signature:()
+Deny::printStageSchedule	deny.cpp	/^void Deny::printStageSchedule()$/;"	f	language:C++	class:Deny	signature:()
+Deny::printStageSchedule	deny.h	/^	void printStageSchedule();$/;"	p	language:C++	class:Deny	access:public	signature:()
+Deny::schedule_history	deny.h	/^	vector<vector<int> > schedule_history; \/\/存放调度方案$/;"	m	language:C++	class:Deny	access:private
+Deny::schedule_now	deny.h	/^	vector<int> schedule_now; \/\/当前的调度方案$/;"	m	language:C++	class:Deny	access:private
+Deny::stage	deny.cpp	/^void Deny::stage(int loop)$/;"	f	language:C++	class:Deny	signature:(int loop)
+Deny::stage	deny.h	/^	void stage(int loop);\/\/执行一轮循环$/;"	p	language:C++	class:Deny	access:private	signature:(int loop)
+Deny::start	deny.cpp	/^void Deny::start()$/;"	f	language:C++	class:Deny	signature:()
+Deny::start	deny.h	/^	void start(); \/\/开始调度$/;"	p	language:C++	class:Deny	access:public	signature:()
+Deny::total	deny.h	/^    int total;  \/\/cpu数量$/;"	m	language:C++	class:Deny	access:private
+Deny::total_cost	deny.h	/^	double total_cost;	\/\/总的开销$/;"	m	language:C++	class:Deny	access:private
+Deny::total_cost_history	deny.h	/^	vector<double> total_cost_history;$/;"	m	language:C++	class:Deny	access:private
+Deny::~Deny	deny.cpp	/^Deny::~Deny(){$/;"	f	language:C++	class:Deny	signature:()
+Deny::~Deny	deny.h	/^	~Deny();$/;"	p	language:C++	class:Deny	access:public	signature:()
+LIFE_MAX	deny.h	/^	const int LIFE_MAX = total;$/;"	m	language:C++	class:Deny	access:private
+SRC	Makefile	/^SRC=deny.cpp$/;"	m	language:Make
+chengji	deny.h	/^	vector<vector<int> > chengji; \/\/app在各个内核上的成绩 	$/;"	m	language:C++	class:Deny	access:private
+cost_history	deny.h	/^	vector<vector<double> > cost_history;  \/\/存放调度方案对应的开销     $/;"	m	language:C++	class:Deny	access:private
+dv	deny.cpp	/^typedef vector<double> dv;$/;"	t	language:C++	file:
+getIntRandom	deny.cpp	/^int getIntRandom(int min,int max)$/;"	f	language:C++	signature:(int min,int max)
+getIntRandom	deny.h	/^int getIntRandom(int min,int max); \/\/ get random integer in [ min ,max)$/;"	p	language:C++	signature:(int min,int max)
+getLastCost	deny.cpp	/^double Deny::getLastCost(int app,int core)$/;"	f	language:C++	class:Deny	signature:(int app,int core)
+getLastCost	deny.h	/^	double getLastCost(int app,int core);	$/;"	p	language:C++	class:Deny	access:public	signature:(int app,int core)
+getValue	deny.cpp	/^double Deny::getValue(int cpu,int app)$/;"	f	language:C++	class:Deny	signature:(int cpu,int app)
+getValue	deny.h	/^	double getValue(int cpu ,int app); \/\/ get value from file$/;"	p	language:C++	class:Deny	access:private	signature:(int cpu ,int app)
+get_schedule_use_probability	deny.h	/^    void get_schedule_use_probability(vector<int>& choosen);\/\/依赖概率的调度方法$/;"	p	language:C++	class:Deny	access:private	signature:(vector<int>& choosen)
+init	deny.cpp	/^void Deny::init()$/;"	f	language:C++	class:Deny	signature:()
+init	deny.h	/^    void init(); \/\/初始化$/;"	p	language:C++	class:Deny	access:private	signature:()
+iv	deny.cpp	/^typedef vector<int> iv;$/;"	t	language:C++	file:
+last_cost	deny.h	/^	vector<vector<double> > last_cost; \/\/app在各个内核上最进的一次开销$/;"	m	language:C++	class:Deny	access:private
+life	deny.h	/^	vector<vector<int> > life; \/\/app在各个内核上的cost的有效性	$/;"	m	language:C++	class:Deny	access:private
+loop	deny.h	/^	int loop;  \/\/local search loop数$/;"	m	language:C++	class:Deny	access:private
+main	deny.cpp	/^int main(int argc,char *argv[])$/;"	f	language:C++	signature:(int argc,char *argv[])
+main	test.cpp	/^int main()$/;"	f	language:C++	signature:()
+maxloop	deny.h	/^	int maxloop;  \/\/最大loop数$/;"	m	language:C++	class:Deny	access:private
+min_cost	deny.h	/^	double min_cost; \/\/当前调度方案的开销$/;"	m	language:C++	class:Deny	access:private
+path	deny.h	/^	char *path; \/\/matrix文件存放路径$/;"	m	language:C++	class:Deny	access:private
+printArray	deny.cpp	/^void printArray(T array,int total)$/;"	f	language:C++	signature:(T array,int total)
+printArray	deny.h	/^void printArray(T,int); \/\/ print 2d arry for debug$/;"	p	language:C++	signature:(T,int)
+printChengji	deny.cpp	/^void Deny::printChengji()$/;"	f	language:C++	class:Deny	signature:()
+printChengji	deny.h	/^	void printChengji(); \/\/打印last_cost 和chengji 矩阵$/;"	p	language:C++	class:Deny	access:public	signature:()
+printCurrentSchedule	deny.cpp	/^void Deny::printCurrentSchedule()$/;"	f	language:C++	class:Deny	signature:()
+printCurrentSchedule	deny.h	/^	void printCurrentSchedule(); \/\/打印当前调度方案$/;"	p	language:C++	class:Deny	access:public	signature:()
+printHistory	deny.cpp	/^void Deny::printHistory()$/;"	f	language:C++	class:Deny	signature:()
+printHistory	deny.h	/^	void printHistory();$/;"	p	language:C++	class:Deny	access:public	signature:()
+printResult	deny.cpp	/^void Deny::printResult()$/;"	f	language:C++	class:Deny	signature:()
+printResult	deny.h	/^	void printResult(); \/\/打印结果$/;"	p	language:C++	class:Deny	access:public	signature:()
+printStageSchedule	deny.cpp	/^void Deny::printStageSchedule()$/;"	f	language:C++	class:Deny	signature:()
+printStageSchedule	deny.h	/^	void printStageSchedule();$/;"	p	language:C++	class:Deny	access:public	signature:()
+printUsage	deny.cpp	/^void printUsage(const char *binname)$/;"	f	language:C++	signature:(const char *binname)
+schedule_history	deny.h	/^	vector<vector<int> > schedule_history; \/\/存放调度方案$/;"	m	language:C++	class:Deny	access:private
+schedule_now	deny.h	/^	vector<int> schedule_now; \/\/当前的调度方案$/;"	m	language:C++	class:Deny	access:private
+stage	deny.cpp	/^void Deny::stage(int loop)$/;"	f	language:C++	class:Deny	signature:(int loop)
+stage	deny.h	/^	void stage(int loop);\/\/执行一轮循环$/;"	p	language:C++	class:Deny	access:private	signature:(int loop)
+start	deny.cpp	/^void Deny::start()$/;"	f	language:C++	class:Deny	signature:()
+start	deny.h	/^	void start(); \/\/开始调度$/;"	p	language:C++	class:Deny	access:public	signature:()
+total	deny.h	/^    int total;  \/\/cpu数量$/;"	m	language:C++	class:Deny	access:private
+total_cost	deny.h	/^	double total_cost;	\/\/总的开销$/;"	m	language:C++	class:Deny	access:private
+total_cost_history	deny.h	/^	vector<double> total_cost_history;$/;"	m	language:C++	class:Deny	access:private
+~Deny	deny.cpp	/^Deny::~Deny(){$/;"	f	language:C++	class:Deny	signature:()
+~Deny	deny.h	/^	~Deny();$/;"	p	language:C++	class:Deny	access:public	signature:()
