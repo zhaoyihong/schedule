@@ -1,0 +1,72 @@
+work load: gzip.mips twolf.mips twolf.mips gap.mips
+hungry:4.799250
+local:4.87307,min:4.79925,max:4.98143
+ga:4.80592,min:4.799251,max:4.830927
+random:4.87503,min:4.79925,max:4.99862
+deny_random:4.79925,min:4.79925,max:4.79925
+deny_life:4.81690,min:4.79925,max:4.82335
+deny_prob:4.85280,min:4.79925,max:4.9869
+
+work load: mesa.mips wupwise.mips crafty.mips bzip2.mips
+hungry:4.535754
+local:4.62969,min:4.53604,max:4.7727
+ga:4.54592,min:4.536037,max:4.562874
+random:4.63248,min:4.53604,max:4.76056
+deny_random:4.53604,min:4.53604,max:4.53604
+deny_life:4.56692,min:4.53604,max:4.64431
+deny_prob:4.62905,min:4.53604,max:4.75824
+
+work load: gcc.mips gzip.mips mcf.mips bzip2.mips
+hungry:7.136523
+local:7.24083,min:7.14083,max:7.31245
+ga:7.25246,min:7.247203,max:7.257123
+random:7.26228,min:7.14083,max:7.3706
+deny_random:7.20686,min:7.13655,max:7.25253
+deny_life:7.19302,min:7.14616,max:7.21513
+deny_prob:7.22865,min:7.14084,max:7.31952
+
+work load: swim.mips twolf.mips bzip2.mips parser.mips
+hungry:4.467313
+local:4.58941,min:4.51452,max:4.74788
+ga:4.54215,min:4.495103,max:4.577250
+random:4.57021,min:4.4951,max:4.73473
+deny_random:4.50290,min:4.4951,max:4.53847
+deny_life:4.52601,min:4.49682,max:4.5958
+deny_prob:4.54882,min:4.48814,max:4.66056
+
+work load: mesa.mips gcc.mips vortex.mips vortex.mips
+hungry:5.175888
+local:5.38491,min:5.31767,max:5.52436
+ga:5.18333,min:5.179721,max:5.196361
+random:5.26423,min:5.18327,max:5.34353
+deny_random:5.18450,min:5.17972,max:5.19306
+deny_life:5.18799,min:5.18634,max:5.18836
+deny_prob:5.21446,min:5.17972,max:5.27312
+
+work load: vpr.mips mesa.mips bzip2.mips parser.mips
+hungry:4.235670
+local:4.33598,min:4.2636,max:4.40633
+ga:4.23959,min:4.235670,max:4.251429
+random:4.34431,min:4.28659,max:4.42414
+deny_random:4.23567,min:4.23567,max:4.23567
+deny_life:4.29142,min:4.26212,max:4.33336
+deny_prob:4.27175,min:4.23567,max:4.30185
+
+work load: gap.mips swim.mips gcc.mips crafty.mips
+hungry:5.505754
+local:5.56466,min:5.51418,max:5.59487
+ga:5.52379,min:5.516567,max:5.534402
+random:5.54241,min:5.51683,max:5.58236
+deny_random:5.51778,min:5.51132,max:5.52505
+deny_life:5.55042,min:5.51965,max:5.57174
+deny_prob:5.55562,min:5.51598,max:5.59244
+
+work load: crafty.mips equake.mips gcc.mips parser.mips
+hungry:4.424424
+local:4.53566,min:4.45462,max:4.64086
+ga:4.43281,min:4.424423,max:4.446174
+random:4.50202,min:4.42442,max:4.67702
+deny_random:4.42442,min:4.42442,max:4.42442
+deny_life:4.48026,min:4.43966,max:4.52142
+deny_prob:4.51214,min:4.45038,max:4.58371
+

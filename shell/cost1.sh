@@ -13,6 +13,7 @@ t2=0
 t3=0
 t4=0
 t5=0
+t6=0
 
 min1=10000
 max1=0
@@ -29,6 +30,9 @@ max4=0
 min5=10000
 max5=0
 
+min6=10000
+max6=0
+
 loop=100
 for i in `seq 1 $loop`
 do
@@ -39,6 +43,7 @@ do
 	r3=`../bin/random data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
 	r4=`../bin/deny_random data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
 	r5=`../bin/deny_life data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
+	r6=`../bin/deny_prob data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
 
 	#echo "$r1 $r2"
 	t1=`echo "$t1+$r1" | bc`
@@ -46,6 +51,7 @@ do
 	t3=`echo "$t3+$r3" | bc `	
 	t4=`echo "$t4+$r4" | bc `	
 	t5=`echo "$t5+$r5" | bc `	
+	t6=`echo "$t6+$r6" | bc `	
 	
 	
 	[ $( echo "$r1 < $min1" | bc ) -eq 1 ] &&   min1=$r1
@@ -63,6 +69,11 @@ do
 	
 	[ $( echo "$r5 < $min5" | bc ) -eq 1 ] &&   min5=$r5
 	[ $( echo "$r5 > $max5" | bc ) -eq 1 ] &&   max5=$r5
+
+    [ $( echo "$r6 < $min6" | bc ) -eq 1 ] &&   min6=$r6
+	[ $( echo "$r6 > $max6" | bc ) -eq 1 ] &&   max6=$r6
+
+
 done
 
 t0=`sh hungry.sh ${size} data/matrix${size}-1-${k} | tail -n 1`
@@ -73,6 +84,7 @@ t2=`echo "scale=5;$t2/$loop" | bc`
 t3=`echo "scale=5;$t3/$loop" | bc`
 t4=`echo "scale=5;$t4/$loop" | bc`
 t5=`echo "scale=5;$t5/$loop" | bc`
+t6=`echo "scale=5;$t6/$loop" | bc`
 
 tail -n1 data/matrix${size}-1-${k}
 
@@ -82,4 +94,6 @@ echo "ga:$t2,min:$min2,max:$max2"
 echo "random:$t3,min:$min3,max:$max3"
 echo "deny_random:$t4,min:$min4,max:$max4"
 echo "deny_life:$t5,min:$min5,max:$max5"
+echo "deny_prob:$t6,min:$min6,max:$max6"
 echo ""
+
