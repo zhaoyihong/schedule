@@ -105,22 +105,22 @@ void Deny::printHistory()
 {
 	for(int i = 0; i < maxloop ; ++i)
 	{
-//		cout << "第" << i+1 << "轮" << endl;
-//		cout <<  "调度方案 :" << endl;
+		cout << "第" << i+1 << "轮" << endl;
+		cout <<  "调度方案 :" << endl;
 		for(int j =0; j < total; ++ j)
 		{
 			cout << schedule_history[i][j] << " ";
 		}
 		cout << endl;
-	//	cout << "开销分别为:" << endl;
+		cout << "开销分别为:" << endl;
 		for(int j =0; j < total; ++ j)
         {
-  //          cout << cost_history[i][j] << " ";
+            cout << cost_history[i][j] << " ";
         }
-//		cout << endl;
-//		cout << "本轮总开销为: " << endl;
+		cout << endl;
+		cout << "本轮总开销为: " << endl;
 		cout  << total_cost_history[i] << endl;
-//		cout << endl;
+		cout << endl;
 	}
 }
 void Deny::printResult()
@@ -298,28 +298,20 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
         cout << endl;
        
         //可能会出现全0的情况
-        /* 
         if(sum - 0.0000001 < 0.00001 && sum - 0.0000001 > -0.001)
         {
             sum = 1;
         }
-        */
 
-        sum = sum + 1;
+
+
+
         iv prob; //概率大小 : 总和 - 个体
         cout << "last cost trans:" ;
         for(it2=vapp.begin();it2!=vapp.end();++it2)
         {
-            int intprob = (sum-last_cost[coreid][*it2])*10000 ;
-            
-            if(last_cost[coreid][*it2] <  0.000001 )
-            {
-                intprob *= 10;
-            }
-            prob.push_back(intprob);
-
-            //cout << prob.back() << " ";
-            cout << intprob  << " ";
+            prob.push_back((sum-last_cost[coreid][*it2])*10000);
+            cout << prob.back() << " ";
         }
         cout << endl;
 
@@ -389,7 +381,7 @@ int main(int argc,char *argv[])
 	Deny deny(total,path,maxloop);
     deny.start();		
     deny.printHistory();
-   // deny.printChengji();
+    deny.printChengji();
     deny.printResult();
 	return 0;
 }

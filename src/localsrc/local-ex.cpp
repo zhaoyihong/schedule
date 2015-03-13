@@ -39,7 +39,7 @@ void Local::init()
 	}
 	
 	random_shuffle(schedule,schedule+total); //打乱顺序
-	printArray(schedule,total); 
+	//printArray(schedule,total); 
 	initData();
 	
 }
@@ -59,10 +59,10 @@ double Local::getValue(int cpu,int app)
 {
         ifstream in(path);
         if(!in)
-	{
+	    {
 		 cout << "cannot open " << path  << " ! exit!" << endl;
 		 exit(0); 
-	}
+	    }
 
         int cnt=0;
         string line;
@@ -85,7 +85,7 @@ double Local::getValue(int cpu,int app)
         }
         is >> value;
 	
-   	cout << "getValue(" << loop << "," << cpu << ","  << app << ") : "  << value <<  endl;
+   	//cout << "getValue(" << loop << "," << cpu << ","  << app << ") : "  << value <<  endl;
         return value;
 
 }
@@ -121,7 +121,7 @@ void Local::start()
 		
 			}
 		}
-		cout << "step" << step << endl;
+		//cout << "step" << step << endl;
 
 		
 
@@ -134,7 +134,7 @@ void Local::start()
 		}
 
 
-		cout << "old cost:" << oldCost << endl;
+		//cout << "old cost:" << oldCost << endl;
 
 		switch(step)
 		{
@@ -180,9 +180,10 @@ void Local::start()
 
 		total_cost+=currentCost;
 			
-		cout << "current cost:" << getCurrentCost() << endl;
-		printCurrentSchedule();	
-		cout << endl;
+		//cout << "current cost:" << getCurrentCost() << endl;
+        printCurrentSchedule();	
+		cout <<  getCurrentCost() << endl;
+		//cout << endl;
 		loop ++;
 	}	
 
@@ -265,7 +266,7 @@ void Local::stepD()
 bool Local::swap(int index1,int index2)
 {
 	
-	cout << "swap(" << index1 << "," << index2 << ")" << endl;
+	//cout << "swap(" << index1 << "," << index2 << ")" << endl;
 	//原来的app  调度规则
 	int schedule1 = schedule[index1];
 	int schedule2 = schedule[index2];
@@ -284,7 +285,7 @@ bool Local::swap(int index1,int index2)
 	if(cost_after < cost_before)
 	{
 		//如果互换后更好,则互换
-		cout << "good:" << schedule1 << " " << schedule2 <<  " "<<  cost_before << " "<< cost_after<< endl;
+	//	cout << "good:" << schedule1 << " " << schedule2 <<  " "<<  cost_before << " "<< cost_after<< endl;
 		schedule[index1] = schedule2;
 		schedule[index2] = schedule1;
 		return true;

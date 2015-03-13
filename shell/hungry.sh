@@ -37,7 +37,7 @@ hungry()
 {
 
 	result=0
-	for((i=1;i<=16;i++)) #loop
+	for((i=1;i<=127;i++)) #loop
 	{
 		data=""
 		for((k=1;k<=$total;k++))
