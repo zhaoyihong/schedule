@@ -1,0 +1,16 @@
+.PHONY:clean test
+CC=g++
+CC_FLAGS=-Wall -g --std=c++11 -L../munkres-cpp-master/src -lmunkres -I../munkres-cpp-master/src
+BIN=deny
+SRC=deny.cpp
+
+$(BIN):$(SRC)
+	$(CC) $(SRC) $(CC_FLAGS)  -o $(BIN) 
+test4:
+	./$(BIN) ../../shell/data/m4-3 4 16
+test8:
+	./$(BIN) ../../shell/data/m8-3 8 16
+test127:
+	./$(BIN) ../../shell/data/matrix4-2-1 4 127
+clean:
+	rm $(BIN)
