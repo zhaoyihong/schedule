@@ -1,4 +1,6 @@
 #include "deny.h"
+#include  <sys/time.h>
+
 
 typedef vector<int> iv;
 typedef vector<double> dv;
@@ -9,7 +11,7 @@ Deny::~Deny(){
 }
 void Deny::init()
 {
-	cout << "init" << endl;
+//	cout << "init" << endl;
 	loop=0; //使用第0阶段的值进行初始化
 	total_cost = 0.0;
 	dv icost;
@@ -18,8 +20,14 @@ void Deny::init()
 	{
 		ischedule.push_back(i);
 	}
-	random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
-	min_cost = 0;	
+
+    
+    #ifdef RANDOM_START     
+    random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
+    #endif
+
+
+    min_cost = 0;	
 	for(int i=0;i<total;i++) //计算开销
     {
 		double cost_for_app = getValue(i,ischedule[i]);
@@ -195,8 +203,9 @@ void Deny::stage(int loop)
     
     cout << "第" << loop << "轮调度计算开始:" << endl;
 	//使用匈牙利算法计算choosen和开销
-	iv choosen(total); //匈牙利算法算出来的开销
+	iv choosen(total); //新的算法的开销
 
+    
     get_schedule_use_probability(choosen);
 	
     //cout << "min cost:" << min_cost << endl; 
@@ -285,17 +294,17 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
         //计算每个应用的概率 
 
         int coreid = *it;
-        cout << "core:" << coreid << endl;
+        //cout << "core:" << coreid << endl;
 
         double sum = 0; //开销的累加和
-        cout << "last cost:";
+       // cout << "last cost:";
         vector<int>::iterator it2;
         for(it2=vapp.begin();it2!=vapp.end();++it2)
         {
-            cout << last_cost[coreid][*it2] << " ";
+         //   cout << last_cost[coreid][*it2] << " ";
             sum += last_cost[coreid][*it2];
         }
-        cout << endl;
+        //cout << endl;
        
         //可能会出现全0的情况
         /* 
@@ -307,7 +316,7 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
 
         sum = sum + 1;
         iv prob; //概率大小 : 总和 - 个体
-        cout << "last cost trans:" ;
+       // cout << "last cost trans:" ;
         for(it2=vapp.begin();it2!=vapp.end();++it2)
         {
             int intprob = (sum-last_cost[coreid][*it2])*10000 ;
@@ -319,9 +328,9 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
             prob.push_back(intprob);
 
             //cout << prob.back() << " ";
-            cout << intprob  << " ";
+           // cout << intprob  << " ";
         }
-        cout << endl;
+        //cout << endl;
 
         //转换一下,用轮盘法来选择
         
@@ -344,22 +353,22 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
         }
       
     
-        cout <<  "vapp:";
-        printArray(vapp,vapp.size());
-        cout << "prob:";
-        printArray(prob,prob.size());    
-        cout << "rint:" << rint << endl;
-        cout <<"choose:" << choose_app << endl;
-        cout << endl;
+        //cout <<  "vapp:";
+        //printArray(vapp,vapp.size());
+        //cout << "prob:";
+        //printArray(prob,prob.size());    
+        //cout << "rint:" << rint << endl;
+        //cout <<"choose:" << choose_app << endl;
+        //cout << endl;
 
        //将choonsen_app添加到choosen中,并从vapp中删除
         vapp.erase(remove(vapp.begin(),vapp.end(),choose_app),vapp.end());
         choosen[coreid] = choose_app ;
     }
 
-    cout << "choosen:" ;
-    printArray(choosen,choosen.size());
-    cout << endl;
+    //cout << "choosen:" ;
+    //printArray(choosen,choosen.size());
+    //cout << endl;
 }
 
 
@@ -387,9 +396,17 @@ int main(int argc,char *argv[])
 	int total = atoi(argv[2]);	
 	int maxloop = atoi(argv[3]);	
 	Deny deny(total,path,maxloop);
+    
+    struct timeval tv_start,tv_end;
+     gettimeofday(&tv_start,NULL);
     deny.start();		
+     gettimeofday(&tv_end,NULL);
+    double time_total = tv_end.tv_sec-tv_start.tv_sec+(tv_end.tv_usec-tv_start.tv_usec)/1000000.0;
+
+    
     deny.printHistory();
-   // deny.printChengji();
+    deny.printChengji();
+    cout << time_total << endl;
     deny.printResult();
 	return 0;
 }

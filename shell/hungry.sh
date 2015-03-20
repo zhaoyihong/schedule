@@ -37,7 +37,7 @@ hungry()
 {
 
 	result=0
-	for((i=1;i<=127;i++)) #loop
+	for((i=1;i<=31;i++)) #loop
 	{
 		data=""
 		for((k=1;k<=$total;k++))
@@ -52,7 +52,7 @@ hungry()
 
 	  	#tmp=`curl -s "${url}${data}"  | grep "optimal value is" | awk '{print $5}' | sed 's/.<\/p>.*$//g'`
 	  	#tmp=`curl -s "${url}${data}" | grep "The optimal value equals " | sed 's/.*equals //'  | sed 's/.<.*$//'`
-		$SCHEDULE_BINPATH/hungarian $data
+    	$SCHEDULE_BINPATH/hungarian $data
 		tmp=`$SCHEDULE_BINPATH/hungarian  $data | tail -n 1`
 	
 	#	echo "$data"

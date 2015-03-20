@@ -1,8 +1,8 @@
 .PHONY:clean test
 CC=g++
 CC_FLAGS=-Wall -g --std=c++11
-BIN=prob
-SRC=deny.cpp
+BIN=localsearch
+SRC=localsearch.cpp
 
 $(BIN):$(SRC)
 	$(CC) $(SRC) $(CC_FLAGS)  -o $(BIN) 

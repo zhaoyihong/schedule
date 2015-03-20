@@ -25,6 +25,7 @@ public:
 	double result(); //打印结果
 	void printCurrentSchedule();
 
+    double time_total = 0.0;
 private:
         int size;  //cpu数量
 	int total; 

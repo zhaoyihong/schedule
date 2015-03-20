@@ -1,6 +1,8 @@
 #include "deny.h"
 //#include "hungarian.hpp"
 #include "munkres.h"
+#include <sys/time.h>
+
 
 typedef vector<int> iv;
 typedef vector<double> dv;
@@ -15,7 +17,7 @@ Deny::~Deny(){
 
 void Deny::init()
 {
-	cout << "init" << endl;
+	//cout << "init" << endl;
 	loop=0; //使用第0阶段的值进行初始化
 	total_cost = 0.0;
 
@@ -25,8 +27,9 @@ void Deny::init()
 	{
 		ischedule.push_back(i);
 	}
-	
+	#ifdef RANDOM_START
 	random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
+    #endif
 
 	min_cost = 0;	
 	for(int i=0;i<total;i++) //计算开销
@@ -139,6 +142,7 @@ void Deny::printResult()
 //	cout << "|  总开销为:" <<  total_cost << "  |"<<  endl;
 //	cout << "----------------------------" << endl;
 
+    cout << time_total << endl;
 	cout << total_cost << endl;
 }
 
@@ -148,13 +152,19 @@ void Deny::printResult()
 */
 
 void Deny::start()
-{
+{  
+    struct timeval tv_start,tv_end;
+    gettimeofday(&tv_start,NULL);
+
 	for(loop=1; loop<=maxloop ; ++loop )
 	{
 		stage(loop);	
 	//	printCurrentSchedule();
 	//	printStageSchedule();
 	}
+    gettimeofday(&tv_end,NULL);
+    time_total = tv_end.tv_sec-tv_start.tv_sec+(tv_end.tv_usec-tv_start.tv_usec)/1000000.0;
+
 }
 
 //使用匈牙利算法对last_cost矩阵计算开销
@@ -198,8 +208,12 @@ double Deny::useHungarian(vector<int> & choosen)
 //选出新的方案,并更新min_value 和 schedule_now
 void Deny::stage(int loop)
 {
-	cout << "第" << loop << "轮调度计算开始:" << endl;
-	iv choosen(total); //算出来的开销
+	
+  
+    //cout << "第" << loop << "轮调度计算开始:" << endl;
+	
+    
+    iv choosen(total); //算出来的开销
     
     //每轮都对last_cost更新total个数据
     for(int i=0;i<total;++i)
@@ -209,7 +223,7 @@ void Deny::stage(int loop)
 
     if(loop%total == 0)
     {
-        cout << "use hungarian" << endl;
+      //  cout << "use hungarian" << endl;
         useHungarian(choosen);	
         schedule_now = choosen; 
     }
@@ -232,6 +246,8 @@ void Deny::stage(int loop)
     cost_history.push_back(vcost_this_loop);
     total_cost_history.push_back(cost_this_loop);
 
+    
+   
 }
 
 

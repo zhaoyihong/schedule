@@ -1,6 +1,6 @@
 
 #include "local.h"
-
+#include  <sys/time.h>
 
 Local::Local(int total,char *path,int maxloop):total(total),path(path),maxloop(maxloop){
 	init();
@@ -38,7 +38,7 @@ void Local::init()
 		schedule_bk[i]=i;
 	}
 	
-	random_shuffle(schedule,schedule+total); //打乱顺序
+	//random_shuffle(schedule,schedule+total); //打乱顺序
 	//printArray(schedule,total); 
 	initData();
 	
@@ -93,6 +93,9 @@ double Local::getValue(int cpu,int app)
 
 void Local::start()
 {
+    struct timeval tv_start,tv_end; 
+    gettimeofday(&tv_start,NULL);
+
 	for(int i=1;i<=maxloop;++i)
 	{
 		int step=i%4;
@@ -106,7 +109,7 @@ void Local::start()
 				else if(step == 2) {step = 0; }
 				else if(step == 3) {step = 2; }
 			}
-			else
+			else 
 			{
 				/*
 					8核的分布
@@ -117,7 +120,7 @@ void Local::start()
 					
 					只有2列 不做奇偶列互换
 				*/
-                                 if(step == 3) {step = 0; }		
+                if(step == 3) {step = 0; }		
 		
 			}
 		}
@@ -153,8 +156,6 @@ void Local::start()
 			case 3:
 			stepD();
 			break;	
-
-			
 			
 			default:
 			break;	
@@ -181,11 +182,16 @@ void Local::start()
 		total_cost+=currentCost;
 			
 		//cout << "current cost:" << getCurrentCost() << endl;
-        printCurrentSchedule();	
+        //printCurrentSchedule();	
 		cout <<  getCurrentCost() << endl;
 		//cout << endl;
 		loop ++;
 	}	
+
+ 
+     gettimeofday(&tv_end,NULL);
+     time_total = tv_end.tv_sec-tv_start.tv_sec+(tv_end.tv_usec-tv_start.tv_usec)/1000000.0;
+ 
 
 }
 
@@ -373,6 +379,7 @@ int main(int argc,char *argv[])
 	//getValue(path,1,1,1) ;	
 	Local local(total,path,maxloop);
 	local.start();
+	cout << local.time_total << endl;
 	cout << local.result() << endl;
 
 	return 0;

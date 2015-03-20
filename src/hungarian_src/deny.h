@@ -51,9 +51,11 @@ private:
 	double useHungarian(vector<int> &);
 	const int LIFE_MAX = total;
 	double useHungarian_withlife(vector<int>&);
+    double time_total = 0.0;    
 public :
 	//得到history中	最近的一次 app在 core上的开销
 	double getLastCost(int app,int core);	
+
 
 };
 
