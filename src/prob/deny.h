@@ -46,7 +46,7 @@ private:
 	double total_cost;	//总的开销
 	double min_cost; //当前调度方案的开销
 	void stage(int loop);//执行一轮循环
-	const int LIFE_MAX = total + total/2 ;
+	const int LIFE_MAX = total;
     void get_schedule_use_probability(vector<int>& choosen);//依赖概率的调度方法
 
 

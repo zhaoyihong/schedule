@@ -22,19 +22,22 @@
 + loop=1
 ++ seq 1 1
 + for i in '`seq 1 $loop`'
-++ ../bin/localsearch data/matrix4-2-1 4 31
 ++ tail -n 1
-+ r1=6.43037
+++ ../bin/localsearch data/matrix4-1-1 4 31
++ r1=9.31121
+++ tail -n 1
+++ ../bin/hungarian2 data/matrix4-1-1 4 31
++ r2=9.33198
 ++ ../bin/prob data/matrix4-1-1 4 31
 ++ tail -n 1
-+ r6=9.31155
++ r6=9.29991
 + r2=0
 + r3=0
 + r4=0
 + r5=0
-++ echo 0+6.43037
+++ echo 0+9.31121
 ++ bc
-+ t1=6.43037
++ t1=9.31121
 ++ echo 0+0
 ++ bc
 + t2=0
@@ -47,23 +50,21 @@
 ++ echo 0+0
 ++ bc
 + t5=0
-++ echo 0+9.31155
+++ echo 0+9.29991
 ++ bc
-+ t6=9.31155
-++ echo '6.43037 < 10000'
-++ bc
-+ '[' 1 -eq 1 ']'
-+ min1=6.43037
-++ echo '6.43037 > 0'
++ t6=9.29991
 ++ bc
 + '[' 1 -eq 1 ']'
-+ max1=6.43037
++ min1=9.31121
+++ echo '9.31121 > 0'
+++ bc
++ '[' 1 -eq 1 ']'
++ max1=9.31121
 ++ echo '0 < 10000'
 ++ bc
 + '[' 1 -eq 1 ']'
 + min2=0
 ++ echo '0 > 0'
-++ bc
 + '[' 0 -eq 1 ']'
 ++ echo '0 < 10000'
 ++ bc
@@ -86,22 +87,22 @@
 ++ echo '0 > 0'
 ++ bc
 + '[' 0 -eq 1 ']'
-++ echo '9.31155 < 10000'
+++ echo '9.29991 < 10000'
 ++ bc
 + '[' 1 -eq 1 ']'
-+ min6=9.31155
-++ echo '9.31155 > 0'
++ min6=9.29991
+++ echo '9.29991 > 0'
 ++ bc
 + '[' 1 -eq 1 ']'
-+ max6=9.31155
-++ sh hungry.sh 4 data/matrix4-2-1
++ max6=9.29991
+++ sh hungry.sh 4 data/matrix4-1-1
 ++ tail -n 1
-+ t0=6.361314
-++ echo 'scale=5;6.43037/1'
++ t0=9.299913
+++ echo 'scale=5;9.31121/1'
 ++ bc
-+ t1=6.43037
-++ bc
++ t1=9.31121
 ++ echo 'scale=5;0/1'
+++ bc
 + t2=0
 ++ echo 'scale=5;0/1'
 ++ bc
@@ -109,18 +110,18 @@
 ++ echo 'scale=5;0/1'
 ++ bc
 + t4=0
-++ bc
 ++ echo 'scale=5;0/1'
-+ t5=0
-++ echo 'scale=5;9.31155/1'
 ++ bc
-+ t6=9.31155
++ t5=0
+++ echo 'scale=5;9.29991/1'
+++ bc
++ t6=9.29991
 + tail -n1 data/matrix4-1-1
-+ echo hungarian:6.361314
-+ echo local:6.43037,min:6.43037,max:6.43037
-+ echo ga:0,min:0,max:0
++ echo hungarian:9.299913
++ echo local:9.31121,min:9.31121,max:9.31121
++ echo hun2:0,min:0,max:0
 + echo random:0,min:0,max:0
 + echo deny_random:0,min:0,max:0
 + echo deny_life:0,min:0,max:0
-+ echo deny_prob:9.31155,min:9.31155,max:9.31155
++ echo deny_prob:9.29991,min:9.29991,max:9.29991
 + echo ''

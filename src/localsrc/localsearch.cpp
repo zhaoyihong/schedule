@@ -38,7 +38,7 @@ void Local::init()
 		schedule_bk[i]=i;
 	}
 	
-	//random_shuffle(schedule,schedule+total); //打乱顺序
+	random_shuffle(schedule,schedule+total); //打乱顺序
 	//printArray(schedule,total); 
 	initData();
 	
@@ -182,7 +182,7 @@ void Local::start()
 		total_cost+=currentCost;
 			
 		//cout << "current cost:" << getCurrentCost() << endl;
-        //printCurrentSchedule();	
+        printCurrentSchedule();	
 		cout <<  getCurrentCost() << endl;
 		//cout << endl;
 		loop ++;
