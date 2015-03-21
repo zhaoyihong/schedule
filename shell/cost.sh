@@ -40,13 +40,11 @@ do
 	#r2=`../bin/ga4 data/m4-$k 16 | tail -n 1 | awk '{print $NF}'`
 	r1=` ../bin/localsearch data/matrix${size}-1-${k} ${size} 31  | tail -n 1`
 	r2=`../bin/hungarian2 data/matrix${size}-1-${k} ${size} 31 | tail -n 1`
-#	r3=`../bin/random data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
+	r3=`../bin/random data/matrix${size}-1-${k} ${size} 31  | tail -n 1`
 #	r4=`../bin/deny_random data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
 #	r5=`../bin/deny_life data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
 	r6=`../bin/prob data/matrix${size}-1-${k} ${size} 31  | tail -n 1`
 
-
-    r3=0
     r4=0
     r5=0
 

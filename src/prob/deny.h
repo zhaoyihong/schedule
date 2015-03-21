@@ -46,9 +46,9 @@ private:
 	double total_cost;	//总的开销
 	double min_cost; //当前调度方案的开销
 	void stage(int loop);//执行一轮循环
-	const int LIFE_MAX = total;
+	const int LIFE_MAX = total + total/2;
     void get_schedule_use_probability(vector<int>& choosen);//依赖概率的调度方法
-
+    void get_schedule_use_random(vector<int> &choosen);
 
 public :
 	//得到history中	最近的一次 app在 core上的开销

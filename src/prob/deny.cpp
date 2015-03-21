@@ -30,12 +30,6 @@ void Deny::init()
 
 
     min_cost = 0;	
-	for(int i=0;i<total;i++) //计算开销
-    {
-		double cost_for_app = getValue(i,ischedule[i]);
-        icost.push_back(cost_for_app);
-        min_cost += cost_for_app;
-	}
 	schedule_now = ischedule;
 	//初始化各个cost的life
 	for(int i=0;i < total; ++i)
@@ -93,6 +87,7 @@ double Deny::getValue(int cpu,int app)
    	//cout << "getValue(" << loop << "," << cpu << ","  << app << ") : "  << value <<  endl;
         return value;
 }
+
 //打印当前的调度方案及其开销
 void Deny::printCurrentSchedule()
 {
@@ -215,6 +210,7 @@ void Deny::stage(int loop)
     {
         iv temp(total);
         get_schedule_use_probability(temp);
+        //get_schedule_use_random(temp);
 
         //计算每种解决方案在last_cost中的开销
         double sumcost_for_temp = 0.0;
@@ -224,29 +220,38 @@ void Deny::stage(int loop)
             sumcost_for_temp += last_cost[j][temp[j]];
             sumlife_for_temp += life[j][temp[j]];
         }
-        cost_for_choosens.push_back(sumcost_for_temp);
-        life_for_choosens.push_back(sumlife_for_temp);
    
-        printArray(temp,temp.size());
-        cout << sumcost_for_temp << endl;
-        cout << sumlife_for_temp << endl;
-
-        if(sumcost_for_temp != (LIFE_MAX-1)*total)
+        //if(sumcost_for_temp < min_cost)
+        {
             choosens.push_back(temp);
+            cost_for_choosens.push_back(sumcost_for_temp);
+            life_for_choosens.push_back(sumlife_for_temp);
+            printArray(temp,temp.size());
+            cout << sumcost_for_temp << endl;
+            cout << sumlife_for_temp << endl;
+        }
     }
 
     //找到choosens中开销最小
-    int imin = 0;
-    double mincost = 10000;
-    for(int i=0;i<cost_for_choosens.size();++i)
+   if(choosens.size()!=0)
     {
-        if(cost_for_choosens[i] < mincost)
+        int imin = 0;
+        double mincost = 10000;
+        for(int i=0;i<cost_for_choosens.size();++i)
         {
-            imin = i;
-            mincost = cost_for_choosens[i];
+            if(cost_for_choosens[i] < mincost)
+            {
+                imin = i;
+                mincost = cost_for_choosens[i];
+            }
         }
+        choosen = choosens[imin];
     }
-    choosen = choosens[imin];
+    else
+    {
+        cout << "rand:" << endl;
+        get_schedule_use_random(choosen);
+    }
 
     cout << "choosen:" << endl;
     printArray(choosen,choosen.size());
@@ -270,9 +275,9 @@ void Deny::stage(int loop)
         vcost_this_loop_old.push_back(cost_for_app_old);
         cost_this_loop_old += cost_for_app_old;	
 	}
-	//比较开销,如果较小才采用新方案,否则schedule_now还是上轮的
-	//2014-11-24 这里用last_cost代替当前的开销不合适,应该用本轮的开销
-	//更新最新开销
+    
+
+	//更新life矩阵和last_cost矩阵
 	for(int i = 0 ;i < total ; ++ i) //内核
 	{
 		int app1,app2;
@@ -283,7 +288,13 @@ void Deny::stage(int loop)
         app2= schedule_now[i];	 //i 内核上的app
         cost2 = vcost_this_loop_old[i]; // app 在 i核上的cost		
 		
+        last_cost[i][app1]= cost1;// 更新最新的cost
+        last_cost[i][app2]= cost2;// 更新最新的cost
 
+        life[i][app1]=LIFE_MAX; //更新这个开销的有效性
+        life[i][app2]=LIFE_MAX; //更新这个开销的有效性
+
+        /*
         //开销更小的内核设置为0
         if(cost1  < cost2)
         {
@@ -323,6 +334,7 @@ void Deny::stage(int loop)
             //life[i][app2]=-1; //更新这个开销的有效性
         }
 
+        */
     
     }
 	//当新的调度方案优于旧的调度方案
@@ -330,7 +342,7 @@ void Deny::stage(int loop)
 	cout << "old:" << cost_this_loop_old << endl;
 	if(cost_this_loop < cost_this_loop_old)
 	{
-	//	min_cost = cost_this_loop; //设置为最小开销
+		min_cost = cost_this_loop; //设置为最小开销
 		schedule_now = choosen; //设定为当前调度方案
 		total_cost += cost_this_loop;
 		schedule_history.push_back(schedule_now);
@@ -339,6 +351,7 @@ void Deny::stage(int loop)
 	} 
 	else
 	{	//旧的更好
+		min_cost = cost_this_loop_old; //设置为最小开销
 		total_cost += cost_this_loop_old;
 		schedule_history.push_back(schedule_now);	
 		cost_history.push_back(vcost_this_loop_old);
@@ -354,6 +367,16 @@ void printArray(T array,int total)
 		cout << array[j] << " " ;		
 	}	
 	cout << endl;
+}
+
+void Deny::get_schedule_use_random(vector<int> &choosen)
+{
+    for(int i=0;i<total;++i)
+	{
+		choosen[i] = i;
+	}
+    
+    random_shuffle(choosen.begin(),choosen.end()); 
 }
 
 
@@ -378,50 +401,71 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
         //计算每个应用的概率 
 
         int coreid = *it;
-        //cout << "core:" << coreid << endl;
+        cout << "core:" << coreid << endl;
+
 
         double sum = 0; //开销的累加和
-        //cout << "last cost:";
         vector<int>::iterator it2;
-        for(it2=vapp.begin();it2!=vapp.end();++it2)
-        {
-          //  cout << last_cost[coreid][*it2] << " ";
-            sum += last_cost[coreid][*it2];
-        }
-        //cout << endl;
-       
-        //可能会出现全0的情况
-        /* 
-        if(sum - 0.0000001 < 0.00001 && sum - 0.0000001 > -0.001)
-        {
-            sum = 1;
-        }
-        */
+        //求非0的最小值 
 
-        sum = sum + 1;
-        iv prob; //概率大小 : 总和 - 个体
-        // cout << "last cost trans:" ;
+        vector<double> fake_cost(total,0.0);
+        double min = 100;
         for(it2=vapp.begin();it2!=vapp.end();++it2)
         {
-            int intprob = (sum-last_cost[coreid][*it2])*10000 ;
-            
+            double real_cost = last_cost[coreid][*it2];
+            fake_cost[*it2] = real_cost;
+            //min 是cost中非0且最小的值
+            if(real_cost > 0.000001 && real_cost < min)
+            {
+                min = real_cost;
+            }
+        }
+
+        if(min == 100)
+        {
+            min = 1;
+        }
+
+
+        cout << "last cost:";
+        for(it2=vapp.begin();it2!=vapp.end();++it2)
+        {
+            if(fake_cost[*it2] < 0.000001)
+            {
+                fake_cost[*it2] = min;
+            }
+
+            cout << last_cost[coreid][*it2] << " ";
+            sum += fake_cost[*it2];
+        }
+        cout << endl;
+       
+        //sum = sum*2;
+        iv prob; //概率大小 : 总和 - 个体
+        cout << "last cost trans:" ;
+        for(it2=vapp.begin();it2!=vapp.end();++it2)
+        {
+            int intprob = (sum-fake_cost[*it2])*1000;
+           
+            /*
             if(last_cost[coreid][*it2] <  0.000001 )
             {
                 intprob *= 10;
             }
+            */
+
             prob.push_back(intprob);
 
             //cout << prob.back() << " ";
-          //  cout << intprob  << " ";
+            cout << intprob  << " ";
         }
-       // cout << endl;
+        cout << endl;
 
         //转换一下,用轮盘法来选择
         
         for(int i=1;i<(int)prob.size();++i)
         {
             prob[i] += prob[i-1];
-           
         }
 
         int rint = getIntRandom(0,prob.back());
@@ -437,12 +481,12 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
         }
       
     
-        //cout <<  "vapp:";
-        //printArray(vapp,vapp.size());
-        //cout << "prob:";
-        //printArray(prob,prob.size());    
-       // cout << "rint:" << rint << endl;
-       // cout <<"choose:" << choose_app << endl;
+        cout <<  "vapp:";
+        printArray(vapp,vapp.size());
+        cout << "prob:";
+        printArray(prob,prob.size());    
+        cout << "rint:" << rint << endl;
+        cout <<"choose:" << choose_app << endl;
         //cout << endl;
 
        //将choonsen_app添加到choosen中,并从vapp中删除
