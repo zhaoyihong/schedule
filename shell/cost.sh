@@ -38,12 +38,12 @@ for i in `seq 1 $loop`
 do
 	#r1=` ../bin/localsearch data/matrix4-$k 4 16   | tail -n 1`
 	#r2=`../bin/ga4 data/m4-$k 16 | tail -n 1 | awk '{print $NF}'`
-	r1=` ../bin/localsearch data/matrix${size}-1-${k} ${size} 31  | tail -n 1`
-	r2=`../bin/hungarian2 data/matrix${size}-1-${k} ${size} 31 | tail -n 1`
-	r3=`../bin/random data/matrix${size}-1-${k} ${size} 31  | tail -n 1`
-#	r4=`../bin/deny_random data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
+	r1=` ../bin/localsearch data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
+	r2=`../bin/hungarian2 data/matrix${size}-4-${k} ${size} 31 | tail -n 1`
+	r3=`../bin/random data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
+#	r4=`../bin/deny_random data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
 #	r5=`../bin/deny_life data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
-	r6=`../bin/prob data/matrix${size}-1-${k} ${size} 31  | tail -n 1`
+	r6=`../bin/prob data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
 
     r4=0
     r5=0
@@ -81,7 +81,7 @@ do
 
 done
 
-t0=`sh hungry.sh ${size} data/matrix${size}-1-${k} | tail -n 1`
+t0=`sh hungry.sh ${size} data/matrix${size}-4-${k} | tail -n 1`
 
 #echo "$t1 $t2"
 t1=`echo "scale=5;$t1/$loop" | bc`
@@ -91,7 +91,7 @@ t4=`echo "scale=5;$t4/$loop" | bc`
 t5=`echo "scale=5;$t5/$loop" | bc`
 t6=`echo "scale=5;$t6/$loop" | bc`
 
-tail -n1 data/matrix${size}-1-${k}
+tail -n1 data/matrix${size}-4-${k}
 
 echo "hungarian:$t0"
 echo "local:$t1,min:$min1,max:$max1"

@@ -22,7 +22,6 @@ void Deny::init()
 	{
 		ischedule.push_back(i);
 	}
-
     
     #ifdef RANDOM_START     
     random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
@@ -32,11 +31,19 @@ void Deny::init()
     min_cost = 0;	
 	schedule_now = ischedule;
 	//初始化各个cost的life
-	for(int i=0;i < total; ++i)
+	
+    life.assign(total,vector<int>(total,0));
+   
+    //随机化初始值
+    for(int i=0;i < total; ++i)
 	{
-		//life.push_back(vector<int>(total,LIFE_MAX));
-		life.push_back(vector<int>(total,0));
+        for(int j=0;j<total;++j)
+        {
+            life[i][j] =  getIntRandom(1,LIFE_MAX);
+        }
 	}
+
+
 	/*
 		last_cost 
 	*/
@@ -45,7 +52,7 @@ void Deny::init()
 	{
 		last_cost.push_back(vector<double>(total,0.0));
 	}
-    /*
+    
 	//对last_cost进行初始化
 	for(int i  = 0 ; i< total ; ++ i) //core
 	{
@@ -54,7 +61,7 @@ void Deny::init()
 			last_cost[i][j] = getValue(i,j);	
 		}
 	}
-    */
+    
 
 	loop=1;//正式开始时,从loop1开始	
 }
@@ -502,11 +509,13 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
 }
 
 
+//[min,max]
 int getIntRandom(int min,int max)
 {
 	assert(min <= max);
 	return random()%(max-min+1)+min;
 }
+
 void printUsage(const char *binname)
 {
 	cout << "usage :" << endl;

@@ -21,7 +21,7 @@ fi
 
 binall=(`ls $SPEC2000_BIN_PATH`)
 #cpus=`seq 1 $size`
-cpus=`seq $begcpu $(($begcpu+$size))`
+cpus=`seq $begcpu $(($begcpu+$size-1))`
 
 #seq $begcpu $(($begcpu+$size))
 #exit

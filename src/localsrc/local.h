@@ -25,6 +25,7 @@ public:
 	double result(); //打印结果
 	void printCurrentSchedule();
 
+	double getValue(int cpu ,int app); // get value from file
     double time_total = 0.0;
 private:
         int size;  //cpu数量
@@ -40,7 +41,6 @@ private:
 	
 	void initSchedule(); //初始化调度方案
 	void initData();  //初始化调度方案对应开销
-	double getValue(int cpu ,int app); // get value from file
 	//4个阶段的交换
 	void stepA();	
 	void stepB();	

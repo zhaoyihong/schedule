@@ -72,7 +72,7 @@ double Local::getValue(int cpu,int app)
                 getline(in,line);
                 cnt++;
         }
-	getline(in,line);
+        getline(in,line);
 	
 
         cnt=0;
@@ -376,7 +376,6 @@ int main(int argc,char *argv[])
 	int total = atoi(argv[2]);	
 	int maxloop = atoi(argv[3]);	
 
-	//getValue(path,1,1,1) ;	
 	Local local(total,path,maxloop);
 	local.start();
 	cout << local.time_total << endl;
