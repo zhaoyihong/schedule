@@ -3,9 +3,7 @@
 
 
 typedef vector<int> iv;
-typedef vector< vector<int> > iiv;
 typedef vector<double> dv;
-typedef vector< vector<double> > ddv;
 Deny::Deny(int total,char *path,int maxloop):total(total),path(path),maxloop(maxloop){
 	init();
 }
@@ -30,12 +28,17 @@ void Deny::init()
 
 
     min_cost = 0;	
+	for(int i=0;i<total;i++) //计算开销
+    {
+		double cost_for_app = getValue(i,ischedule[i]);
+        icost.push_back(cost_for_app);
+        min_cost += cost_for_app;
+	}
 	schedule_now = ischedule;
 	//初始化各个cost的life
 	for(int i=0;i < total; ++i)
 	{
-		//life.push_back(vector<int>(total,LIFE_MAX));
-		life.push_back(vector<int>(total,0));
+		life.push_back(vector<int>(total,LIFE_MAX));
 	}
 	/*
 		last_cost 
@@ -45,13 +48,19 @@ void Deny::init()
 	{
 		last_cost.push_back(vector<double>(total,0.0));
 	}
-    
-    //search函数中用到的.上一次交换记录
-    last_swap.assign(total,-1); 
-	
-    loop=1;//正式开始时,从loop1开始	
-}
+    /*
+	//对last_cost进行初始化
+	for(int i  = 0 ; i< total ; ++ i) //core
+	{
+		for(int j= 0 ; j< total ; ++j) //app
+		{
+			last_cost[i][j] = getValue(i,j);	
+		}
+	}
+    */
 
+	loop=1;//正式开始时,从loop1开始	
+}
 double Deny::getValue(int cpu,int app)
 {
         ifstream in(path);
@@ -81,7 +90,6 @@ double Deny::getValue(int cpu,int app)
    	//cout << "getValue(" << loop << "," << cpu << ","  << app << ") : "  << value <<  endl;
         return value;
 }
-
 //打印当前的调度方案及其开销
 void Deny::printCurrentSchedule()
 {
@@ -91,7 +99,6 @@ void Deny::printCurrentSchedule()
 	}
 	cout << ",cost= " << min_cost << endl;
 }
-
 //打印上一循环中生成的调度方案及开销
 void Deny::printStageSchedule()
 {
@@ -101,7 +108,6 @@ void Deny::printStageSchedule()
 	}
 	cout << ",cost= " << total_cost_history.back() << endl;
 }
-
 //打印history
 void Deny::printHistory()
 {
@@ -125,7 +131,6 @@ void Deny::printHistory()
 //		cout << endl;
 	}
 }
-
 void Deny::printResult()
 {
 //	cout << "____________________________" << endl;
@@ -156,7 +161,17 @@ void Deny::printChengji()
 	}
 	cout << endl;
 }
-
+double Deny::getLastCost(int app,int core)
+{
+	for(int i=loop; i>=0 ;--i) //在之前的循环中
+	{
+		if( schedule_history[i][core] == app)
+		{
+			return cost_history[i][core];
+		}
+	}
+	return -1;
+}
 /*
 	主要思想是依据之前的开销进行随机调度
 */
@@ -185,98 +200,65 @@ void Deny::stage(int loop)
 		  last_cost[i][j]=0.0;
 	  }
 
-   // cout << "第" << loop << "轮调度计算开始:" << endl;
+    
+    cout << "第" << loop << "轮调度计算开始:" << endl;
 	//使用匈牙利算法计算choosen和开销
 	iv choosen(total); //新的算法的开销
-    choosen  = schedule_now;
 
-    get_schedule_use_search();
-
-    //将choosen变为交换的
-    for(int i=0;i<total;++i)
-    {
-       choosen[i] = schedule_now[last_swap[i]]; 
-    }
-
-     cout << "choosen:" << endl;
-     printArray(choosen,choosen.size());
-     cout << "old:" << endl;
-     printArray(schedule_now,schedule_now.size());
     
+    get_schedule_use_probability(choosen);
+	
     //cout << "min cost:" << min_cost << endl; 
 	//计算开销
 	//总开销
 	double  cost_this_loop = 0.0; //使用choosen方案的cost
 	double  cost_this_loop_old = 0.0; //使用上一轮方案的cost schedule_now
 	//各个app的开销
-	dv vcost_this_loop; //choosen对应的开销
-	dv vcost_this_loop_old; //schedule_now对应的开销
+	dv vcost_this_loop;
+	dv vcost_this_loop_old;
 	for(int i=0; i< total; i++)
 	{
-        double cost_for_app = getValue(i,choosen[i]);
-        vcost_this_loop.push_back(cost_for_app);
-        cost_this_loop += cost_for_app;	
-        double cost_for_app_old = getValue(i,schedule_now[i]);
-        vcost_this_loop_old.push_back(cost_for_app_old);
-        cost_this_loop_old += cost_for_app_old;	
+	     	double cost_for_app = getValue(i,choosen[i]);
+            vcost_this_loop.push_back(cost_for_app);
+            cost_this_loop += cost_for_app;	
+	     	double cost_for_app_old = getValue(i,schedule_now[i]);
+            vcost_this_loop_old.push_back(cost_for_app_old);
+            cost_this_loop_old += cost_for_app_old;	
 	}
-    
-
-	//更新life矩阵和last_cost矩阵
+	//比较开销,如果较小才采用新方案,否则schedule_now还是上轮的
+	//2014-11-24 这里用last_cost代替当前的开销不合适,应该用本轮的开销
+	//更新最新开销
 	for(int i = 0 ;i < total ; ++ i) //内核
 	{
-		int app1,app2;
-		double cost1,cost2;
-		app1= choosen[i];	 //i 内核上的app
-        cost1 = vcost_this_loop[i]; // app 在 i核上的cost		
-		
-        app2= schedule_now[i];	 //i 内核上的app
-        cost2 = vcost_this_loop_old[i]; // app 在 i核上的cost		
-		
-        last_cost[i][app1]= cost1;// 更新最新的cost
-        last_cost[i][app2]= cost2;// 更新最新的cost
-
-        life[i][app1]=LIFE_MAX; //更新这个开销的有效性
-        life[i][app2]=LIFE_MAX; //更新这个开销的有效性
-       
-    }
+		int app;
+		double cost;
+		app= choosen[i];	 //i 内核上的app
+		cost = vcost_this_loop[i]; // app 在 i核上的cost		
+		last_cost[i][app]= cost;// 更新最新的cost
+		life[i][app]=LIFE_MAX; //更新这个开销的有效性.暂时life最大值是total
+		app= schedule_now[i];	 //i 内核上的app
+		cost = vcost_this_loop_old[i]; // app 在 i核上的cost		
+		last_cost[i][app]= cost;// 更新最新的cost
+		life[i][app]=LIFE_MAX; //更新这个开销的有效性.暂时life最大值是total
+	}
 	//当新的调度方案优于旧的调度方案
-//	cout << "new:" << cost_this_loop << " ";
-//	cout << "old:" << cost_this_loop_old << endl;
+	cout << "new:" << cost_this_loop << " ";
+	cout << "old:" << cost_this_loop_old << endl;
 	if(cost_this_loop < cost_this_loop_old)
 	{
-		min_cost = cost_this_loop; //设置为最小开销
+	//	min_cost = cost_this_loop; //设置为最小开销
 		schedule_now = choosen; //设定为当前调度方案
 		total_cost += cost_this_loop;
 		schedule_history.push_back(schedule_now);
 		cost_history.push_back(vcost_this_loop);
 		total_cost_history.push_back(cost_this_loop);
-	    swap_cnt += total/2;
-    } 
+	} 
 	else
-	{	//旧的更好.search由于是swap交换的,比较swap
-
-        swap_over(); //根据last_swap对,对schedule_now进行改进
-  //      cout << "swap over:" << endl;
-//    printArray(schedule_now,schedule_now.size());
-
-        vcost_this_loop_old.clear();
-
-        double cost_swap = 0.0;//本轮开销
-        for(int i=0; i< total; i++)
-        {
-            double cost_for_app = getValue(i,schedule_now[i]);
-            vcost_this_loop_old.push_back(cost_for_app);
-            cost_swap += cost_for_app;	
-        }
-       
-
-//        cout << "cost:" << cost_swap << endl; 
-		min_cost = cost_swap; //设置为最小开销
-		total_cost += cost_swap;
+	{	//旧的更好
+		total_cost += cost_this_loop_old;
 		schedule_history.push_back(schedule_now);	
 		cost_history.push_back(vcost_this_loop_old);
-		total_cost_history.push_back(cost_swap);
+		total_cost_history.push_back(cost_this_loop_old);
 	}
 }
 
@@ -288,16 +270,6 @@ void printArray(T array,int total)
 		cout << array[j] << " " ;		
 	}	
 	cout << endl;
-}
-
-void Deny::get_schedule_use_random(vector<int> &choosen)
-{
-    for(int i=0;i<total;++i)
-	{
-		choosen[i] = i;
-	}
-    
-    random_shuffle(choosen.begin(),choosen.end()); 
 }
 
 
@@ -322,72 +294,50 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
         //计算每个应用的概率 
 
         int coreid = *it;
-
-        cout << "core:" << coreid << endl;
-
+        //cout << "core:" << coreid << endl;
 
         double sum = 0; //开销的累加和
+       // cout << "last cost:";
         vector<int>::iterator it2;
-        //求非0的最小值 
-
-        vector<double> fake_cost(total,0.0);
-        double min = 100;
         for(it2=vapp.begin();it2!=vapp.end();++it2)
         {
-            double real_cost = last_cost[coreid][*it2];
-            fake_cost[*it2] = real_cost;
-            //min 是cost中非0且最小的值
-            if(real_cost > 0.000001 && real_cost < min)
-            {
-                min = real_cost;
-            }
+         //   cout << last_cost[coreid][*it2] << " ";
+            sum += last_cost[coreid][*it2];
         }
-
-        if(min == 100)
-        {
-            min = 1;
-        }
-
-
-        cout << "last cost:";
-        for(it2=vapp.begin();it2!=vapp.end();++it2)
-        {
-            if(fake_cost[*it2] < 0.000001)
-            {
-                fake_cost[*it2] = min;
-            }
-
-            cout << last_cost[coreid][*it2] << " ";
-            sum += fake_cost[*it2];
-        }
-        cout << endl;
+        //cout << endl;
        
-        //sum = sum*2;
+        //可能会出现全0的情况
+        /* 
+        if(sum - 0.0000001 < 0.00001 && sum - 0.0000001 > -0.001)
+        {
+            sum = 1;
+        }
+        */
+
+        sum = sum + 1;
         iv prob; //概率大小 : 总和 - 个体
-        cout << "last cost trans:" ;
+       // cout << "last cost trans:" ;
         for(it2=vapp.begin();it2!=vapp.end();++it2)
         {
-            int intprob = (sum-fake_cost[*it2])*1000;
-           
-            /*
+            int intprob = (sum-last_cost[coreid][*it2])*10000 ;
+            
             if(last_cost[coreid][*it2] <  0.000001 )
             {
                 intprob *= 10;
             }
-            */
-
             prob.push_back(intprob);
 
             //cout << prob.back() << " ";
-            cout << intprob  << " ";
+           // cout << intprob  << " ";
         }
-        cout << endl;
+        //cout << endl;
 
         //转换一下,用轮盘法来选择
         
         for(int i=1;i<(int)prob.size();++i)
         {
             prob[i] += prob[i-1];
+           
         }
 
         int rint = getIntRandom(0,prob.back());
@@ -403,12 +353,12 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
         }
       
     
-        cout <<  "vapp:";
-        printArray(vapp,vapp.size());
-        cout << "prob:";
-        printArray(prob,prob.size());    
-        cout << "rint:" << rint << endl;
-        cout <<"choose:" << choose_app << endl;
+        //cout <<  "vapp:";
+        //printArray(vapp,vapp.size());
+        //cout << "prob:";
+        //printArray(prob,prob.size());    
+        //cout << "rint:" << rint << endl;
+        //cout <<"choose:" << choose_app << endl;
         //cout << endl;
 
        //将choonsen_app添加到choosen中,并从vapp中删除
@@ -421,114 +371,6 @@ void Deny::get_schedule_use_probability(vector<int> &choosen)
     //cout << endl;
 }
 
-void Deny::get_schedule_use_search(void)
-{
-
-    swap_pairs.clear();
-
-    iv cores;
-
-    for(int i=0;i<total;++i)
-    {
-        cores.push_back(i);
-    }
-
-    random_shuffle(cores.begin(),cores.end());
-
-    iv be_choosed(total,0);
-
-    //只有前面的一半的核才可以选择交换的对象
-    
-    int core1,core2,swapid;
-    for(int i=0;i<total/2;++i)
-    {
-        core1 = cores[i];
-        core2 = -1;
-        double min_swap_cost = 100000;
-        
-        for(int j=total/2;j<total;++j)
-        {
-            core2 = cores[j];
-
-            //如果已经被其他内核选择了,就不能选了
-            if(be_choosed[core2])
-            {
-                continue;
-            }
-
-            if(i == total/2 -1) //最后一个内核没得选
-            {
-                swapid = core2;
-                break;
-            }
-
-            //上一轮交换的
-            if(last_swap[core1] == core2 || last_swap[core2] == core1)
-            {
-                continue;
-            }
-   
-            //i核 和 j核上的应用 模拟交换
-            double swap_cost = get_swap_cost(core1,core2);
-            //选取非上一轮换过的核,且依据last_cost矩阵中的数值,交换后会变小的
-            if(swap_cost<=min_swap_cost)
-            {
-                swapid = core2;
-                min_swap_cost = swap_cost;
-            }
-
-        }
-
-        assert(swapid != -1);
-        be_choosed[swapid] = -1;
-        //记录下来,作为这次的交换对
-        last_swap[core1] = swapid;
-        last_swap[swapid] = core1;
-        cout <<" min_swap_cost:" << min_swap_cost << endl;
-        cout << "swap" << core1 << " " << swapid << endl;
-        swap_pairs.insert(pair<int,int>(core1,swapid));
-    
-    }
-
-}
-
-
-
-void Deny::swap_over()
-{
-    for(map<int,int>::iterator it = swap_pairs.begin(); it != swap_pairs.end(); ++it)
-    {
-        int core1 = it->first;
-        int core2 = it->second;
-        int app1 = schedule_now[core1];
-        int app2 = schedule_now[core2];
-
-        double cost_now = getValue(core1,app1) + getValue(core2,app2);
-        double cost_swap = getValue(core1,app2) + getValue(core2,app1);
-
-        if(cost_now > cost_swap)
-        {
-         //   cout << "in swap:" << core1 << " " << core2 << endl;
-            //交换core1和core2上的app
-            schedule_now[core1] = app2;
-            schedule_now[core2] = app1;
-            swap_cnt ++;
-        }
-    }
-
-
-
-}
-
-double Deny::get_swap_cost(int i,int j)
-{
-    int appid1 = schedule_now[i];
-    int appid2 = schedule_now[j];
-    double cost_after = last_cost[i][appid2] + last_cost[j][appid1];
-
-    return cost_after;
-
-}
 
 int getIntRandom(int min,int max)
 {
@@ -564,9 +406,7 @@ int main(int argc,char *argv[])
     
     deny.printHistory();
     deny.printChengji();
-    cout << deny.swap_cnt << endl;
     cout << time_total << endl;
     deny.printResult();
-
-    return 0;
+	return 0;
 }

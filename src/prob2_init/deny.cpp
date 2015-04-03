@@ -34,8 +34,12 @@ void Deny::init()
 	//初始化各个cost的life
 	for(int i=0;i < total; ++i)
 	{
-		//life.push_back(vector<int>(total,LIFE_MAX));
-		life.push_back(vector<int>(total,0));
+        iv tmp;
+        for(int j=0;j<total;++j)
+        {
+            tmp.push_back(getIntRandom(0,LIFE_MAX));
+        }
+        life.push_back(tmp);
 	}
 	/*
 		last_cost 
@@ -45,7 +49,16 @@ void Deny::init()
 	{
 		last_cost.push_back(vector<double>(total,0.0));
 	}
-    
+   
+
+    for(int i=0;i<total;++i)
+    {
+        for(int j=0;j<total;++j)
+        {
+            last_cost[i][j] = getValue(i,j);
+        }
+    }
+
     //search函数中用到的.上一次交换记录
     last_swap.assign(total,-1); 
 	
@@ -156,7 +169,17 @@ void Deny::printChengji()
 	}
 	cout << endl;
 }
-
+double Deny::getLastCost(int app,int core)
+{
+	for(int i=loop; i>=0 ;--i) //在之前的循环中
+	{
+		if( schedule_history[i][core] == app)
+		{
+			return cost_history[i][core];
+		}
+	}
+	return -1;
+}
 /*
 	主要思想是依据之前的开销进行随机调度
 */
@@ -168,7 +191,7 @@ void Deny::start()
 	//	printCurrentSchedule();
 	//	printStageSchedule();
 	//	total_cost += min_cost;
-		printChengji();		
+	//	printChengji();		
 	//	cout << "total cost : "  << total_cost << endl << endl;
 	}
 }
@@ -198,10 +221,10 @@ void Deny::stage(int loop)
        choosen[i] = schedule_now[last_swap[i]]; 
     }
 
-     cout << "choosen:" << endl;
-     printArray(choosen,choosen.size());
-     cout << "old:" << endl;
-     printArray(schedule_now,schedule_now.size());
+    //cout << "choosen:" << endl;
+    //printArray(choosen,choosen.size());
+    //cout << "old:" << endl;
+    //printArray(schedule_now,schedule_now.size());
     
     //cout << "min cost:" << min_cost << endl; 
 	//计算开销
@@ -251,14 +274,13 @@ void Deny::stage(int loop)
 		schedule_history.push_back(schedule_now);
 		cost_history.push_back(vcost_this_loop);
 		total_cost_history.push_back(cost_this_loop);
-	    swap_cnt += total/2;
-    } 
+	} 
 	else
 	{	//旧的更好.search由于是swap交换的,比较swap
 
         swap_over(); //根据last_swap对,对schedule_now进行改进
   //      cout << "swap over:" << endl;
-//    printArray(schedule_now,schedule_now.size());
+    //    printArray(schedule_now,schedule_now.size());
 
         vcost_this_loop_old.clear();
 
@@ -271,7 +293,7 @@ void Deny::stage(int loop)
         }
        
 
-//        cout << "cost:" << cost_swap << endl; 
+      //  cout << "cost:" << cost_swap << endl; 
 		min_cost = cost_swap; //设置为最小开销
 		total_cost += cost_swap;
 		schedule_history.push_back(schedule_now);	
@@ -280,7 +302,7 @@ void Deny::stage(int loop)
 	}
 }
 
-template <typename T>
+template<typename T>
 void printArray(T array,int total)
 {
 	for(int j=0;j<total;j++)
@@ -484,8 +506,7 @@ void Deny::get_schedule_use_search(void)
         //记录下来,作为这次的交换对
         last_swap[core1] = swapid;
         last_swap[swapid] = core1;
-        cout <<" min_swap_cost:" << min_swap_cost << endl;
-        cout << "swap" << core1 << " " << swapid << endl;
+      //  cout << "swap" << core1 << " " << swapid << endl;
         swap_pairs.insert(pair<int,int>(core1,swapid));
     
     }
@@ -508,11 +529,10 @@ void Deny::swap_over()
 
         if(cost_now > cost_swap)
         {
-         //   cout << "in swap:" << core1 << " " << core2 << endl;
+        //    cout << "in swap:" << core1 << " " << core2 << endl;
             //交换core1和core2上的app
             schedule_now[core1] = app2;
             schedule_now[core2] = app1;
-            swap_cnt ++;
         }
     }
 
@@ -563,10 +583,8 @@ int main(int argc,char *argv[])
 
     
     deny.printHistory();
-    deny.printChengji();
-    cout << deny.swap_cnt << endl;
+//    deny.printChengji();
     cout << time_total << endl;
     deny.printResult();
-
-    return 0;
+	return 0;
 }

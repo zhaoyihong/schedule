@@ -33,17 +33,30 @@ max5=0
 min6=10000
 max6=0
 
+bin1=../bin/localsearch
+bin2=../bin/hungarian2
+bin3=../bin/random
+bin4=../bin/prob_init
+bin5=
+bin6=../bin/prob
+
+arg="data/matrix${size}-4-${k} ${size} 31"
+
 loop=100
 for i in `seq 1 $loop`
 do
-	#r1=` ../bin/localsearch data/matrix4-$k 4 16   | tail -n 1`
-	#r2=`../bin/ga4 data/m4-$k 16 | tail -n 1 | awk '{print $NF}'`
-	r1=` ../bin/localsearch data/matrix${size}-1-${k} ${size} 16   | tail -n 1`
-	r2=`../bin/ga${size} data/matrix${size}-1-${k} 16 | tail -n 1 | awk '{print $NF}'`
-	r3=`../bin/random data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
-	r4=`../bin/deny_random data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
-	r5=`../bin/deny_life data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
-	r6=`../bin/deny_prob data/matrix${size}-1-${k} ${size} 16  | tail -n 1`
+
+	r1=` ../bin/localsearch data/matrix${size}-4-${k} ${size} 31  |  tail -n 3 | head -n 1`
+	r2=`../bin/hungarian2 data/matrix${size}-4-${k} ${size} 31 |  tail -n 3 | head -n 1`
+	r3=`../bin/random data/matrix${size}-4-${k} ${size} 31  |  tail -n 3 | head -n1 `
+	r4=`../bin/prob_init data/matrix${size}-4-${k} ${size} 31  |  tail -n 3 | head -n1`
+	r5=`../bin/robin data/matrix${size}-4-${k} ${size} 31  |  tail -n 3 | head -n1`
+	r6=`../bin/prob data/matrix${size}-4-${k} ${size} 31  |  tail -n 3 | head -n1`
+
+    r2=0
+    r3=0
+    r4=0
+    r5=0
 
 	#echo "$r1 $r2"
 	t1=`echo "$t1+$r1" | bc`
@@ -76,7 +89,7 @@ do
 
 done
 
-t0=`sh hungry.sh ${size} data/matrix${size}-1-${k} | tail -n 1`
+t0=`sh hungry.sh ${size} data/matrix${size}-4-${k} | tail -n 1`
 
 #echo "$t1 $t2"
 t1=`echo "scale=5;$t1/$loop" | bc`
@@ -86,14 +99,16 @@ t4=`echo "scale=5;$t4/$loop" | bc`
 t5=`echo "scale=5;$t5/$loop" | bc`
 t6=`echo "scale=5;$t6/$loop" | bc`
 
-tail -n1 data/matrix${size}-1-${k}
+workload=`tail -n 1 data/matrix${size}-4-${k}`
+echo $workload
 
-echo "hungry:$t0"
+
+echo "hungarian:$t0"
 echo "local:$t1,min:$min1,max:$max1"
-echo "ga:$t2,min:$min2,max:$max2"
+echo "hun2:$t2,min:$min2,max:$max2"
 echo "random:$t3,min:$min3,max:$max3"
-echo "deny_random:$t4,min:$min4,max:$max4"
-echo "deny_life:$t5,min:$min5,max:$max5"
-echo "deny_prob:$t6,min:$min6,max:$max6"
+echo "prob_init:$t4,min:$min4,max:$max4"
+echo "robin:$t5,min:$min5,max:$max5"
+echo "prob:$t6,min:$min6,max:$max6"
 echo ""
 

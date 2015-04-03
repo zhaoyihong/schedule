@@ -1,13 +1,13 @@
 .PHONY:clean test
 CC=g++
-CC_FLAGS=-Wall -g -std=c++11 -DRANDOM_START
-BIN=prob
+CC_FLAGS=-Wall -g --std=c++11 -DRANDOM_START
+BIN=greedy
 SRC=deny.cpp
 
 $(BIN):$(SRC)
 	$(CC) $(SRC) $(CC_FLAGS)  -o $(BIN) 
 test4:
-	./$(BIN) ../../shell/data/matrix4-4-2 4 31
+	./$(BIN) ../../shell/data/matrix4-1-2 4 31
 test8:
 	./$(BIN) ../../shell/data/matrix8-1-1 8 31
 test16:

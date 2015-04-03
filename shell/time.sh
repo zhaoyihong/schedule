@@ -72,13 +72,17 @@ do
   #  p6=`echo $text6 | tail -n 2 | head -n 1`
 
 
-	r1=` ../bin/localsearch data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
-	r2=`../bin/hungarian2 data/matrix${size}-4-${k} ${size} 31 | tail -n 1`
-	r3=`../bin/random data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
-	r4=`../bin/prob_init data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
-	r5=`../bin/robin data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
-	r6=`../bin/prob data/matrix${size}-4-${k} ${size} 31  | tail -n 1`
+	r1=` ../bin/localsearch data/matrix${size}-4-${k} ${size} 31  | tail -n 2 | head -n 1`
+	r2=`../bin/hungarian2 data/matrix${size}-4-${k} ${size} 31 | tail -n 2 | head -n 1`
+	r3=`../bin/random data/matrix${size}-4-${k} ${size} 31  | tail -n 2 | head -n1 `
+	r4=`../bin/prob_init data/matrix${size}-4-${k} ${size} 31  | tail -n 2 | head -n1`
+	r5=`../bin/robin data/matrix${size}-4-${k} ${size} 31  | tail -n 2 | head -n1`
+	r6=`../bin/prob data/matrix${size}-4-${k} ${size} 31  | tail -n 2 | head -n1`
 
+
+    r2=0
+    r3=0
+    r4=0
 
 	#echo "$r1 $r2"
 	t1=`echo "$t1+$r1" | bc`

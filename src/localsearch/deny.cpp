@@ -168,7 +168,7 @@ void Deny::start()
 	//	printCurrentSchedule();
 	//	printStageSchedule();
 	//	total_cost += min_cost;
-		printChengji();		
+//		printChengji();		
 	//	cout << "total cost : "  << total_cost << endl << endl;
 	}
 }
@@ -198,10 +198,10 @@ void Deny::stage(int loop)
        choosen[i] = schedule_now[last_swap[i]]; 
     }
 
-     cout << "choosen:" << endl;
-     printArray(choosen,choosen.size());
-     cout << "old:" << endl;
-     printArray(schedule_now,schedule_now.size());
+   // cout << "choosen:" << endl;
+ //   printArray(choosen,choosen.size());
+   // cout << "old:" << endl;
+   // printArray(schedule_now,schedule_now.size());
     
     //cout << "min cost:" << min_cost << endl; 
 	//计算开销
@@ -439,53 +439,28 @@ void Deny::get_schedule_use_search(void)
 
     //只有前面的一半的核才可以选择交换的对象
     
-    int core1,core2,swapid;
+    int core1,swapid;
     for(int i=0;i<total/2;++i)
     {
         core1 = cores[i];
-        core2 = -1;
-        double min_swap_cost = 100000;
-        
-        for(int j=total/2;j<total;++j)
+
+        while(1)
         {
-            core2 = cores[j];
+            int j = getIntRandom(total/2,total-1);
+            swapid = cores[j];
 
-            //如果已经被其他内核选择了,就不能选了
-            if(be_choosed[core2])
+            if(0 == be_choosed[swapid])
             {
-                continue;
-            }
-
-            if(i == total/2 -1) //最后一个内核没得选
-            {
-                swapid = core2;
+                be_choosed[swapid] = 1;
                 break;
             }
-
-            //上一轮交换的
-            if(last_swap[core1] == core2 || last_swap[core2] == core1)
-            {
-                continue;
-            }
-   
-            //i核 和 j核上的应用 模拟交换
-            double swap_cost = get_swap_cost(core1,core2);
-            //选取非上一轮换过的核,且依据last_cost矩阵中的数值,交换后会变小的
-            if(swap_cost<=min_swap_cost)
-            {
-                swapid = core2;
-                min_swap_cost = swap_cost;
-            }
-
         }
-
+   
         assert(swapid != -1);
-        be_choosed[swapid] = -1;
         //记录下来,作为这次的交换对
         last_swap[core1] = swapid;
         last_swap[swapid] = core1;
-        cout <<" min_swap_cost:" << min_swap_cost << endl;
-        cout << "swap" << core1 << " " << swapid << endl;
+       // cout << "swap" << core1 << " " << swapid << endl;
         swap_pairs.insert(pair<int,int>(core1,swapid));
     
     }
@@ -563,10 +538,9 @@ int main(int argc,char *argv[])
 
     
     deny.printHistory();
-    deny.printChengji();
+    //deny.printChengji();
     cout << deny.swap_cnt << endl;
     cout << time_total << endl;
     deny.printResult();
-
     return 0;
 }

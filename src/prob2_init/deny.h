@@ -46,7 +46,7 @@ private:
 	double total_cost;	//总的开销
 	double min_cost; //当前调度方案的开销
 	void stage(int loop);//执行一轮循环
-	const int LIFE_MAX = total*4;
+	const int LIFE_MAX = total;
     void get_schedule_use_probability(vector<int>& choosen);//依赖概率的调度方法
     void get_schedule_use_random(vector<int> &choosen);
     void get_schedule_use_search(void);//采用两两交换的全局搜索 ,交换对在last_swap中
@@ -62,8 +62,6 @@ private:
 public :
 	//得到history中	最近的一次 app在 core上的开销
 	double getLastCost(int app,int core);	
-
-    int swap_cnt = 0;
 
 };
 
