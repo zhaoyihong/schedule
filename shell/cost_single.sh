@@ -15,7 +15,7 @@ t1=0
 
 min1=10000
 max1=0
-path="data/matrix${size}-4-${k}"
+path="data/matrix${size}-5-${k}"
 arg="${path} ${size} 31"
 
 for i in `seq 1 $loop`

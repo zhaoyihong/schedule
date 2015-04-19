@@ -1,0 +1,676 @@
+./tabu-search ../../shell/data/matrix4-1-3 4 31
+swap_pair:
+0:2,3:0,true
+1:3,2:1,true
+choosen:
+0 1 3 2 
+old:
+2 3 1 0 
+new:0.504272 old:0.543241
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+choose new
+swap_pair:
+1:1,2:3,false
+3:2,0:0,false
+choosen:
+0 1 3 2 
+old:
+0 1 3 2 
+new:0.46506 old:0.46506
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+in update:
+update old:
+0 1 3 2 
+cost:0.46506 false
+swap_pair:
+2:3,3:2,true
+0:0,1:1,true
+choosen:
+1 0 2 3 
+old:
+0 1 3 2 
+new:0.451011 old:0.47244
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+choose new
+swap_pair:
+2:2,1:0,true
+3:3,0:1,true
+choosen:
+3 2 0 1 
+old:
+1 0 2 3 
+new:0.501409 old:0.453073
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+in update:
+update old:
+1 0 2 3 
+cost:0.453073 false
+swap_pair:
+0:1,3:3,true
+2:2,1:0,true
+choosen:
+3 2 0 1 
+old:
+1 0 2 3 
+new:0.508389 old:0.459025
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+in update:
+update old:
+1 0 2 3 
+cost:0.459025 false
+swap_pair:
+0:1,3:3,true
+2:2,1:0,true
+choosen:
+3 2 0 1 
+old:
+1 0 2 3 
+new:0.484078 old:0.441754
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+in update:
+0:1,3:3,true
+update old:
+3 0 2 1 
+cost:0.441747 true
+swap_pair:
+1:0,2:2,true
+0:3,3:1,false
+choosen:
+3 2 0 1 
+old:
+3 0 2 1 
+new:0.487166 old:0.444527
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+in update:
+update old:
+3 0 2 1 
+cost:0.444527 false
+swap_pair:
+3:1,2:2,true
+0:3,1:0,true
+choosen:
+0 3 1 2 
+old:
+3 0 2 1 
+new:0.46886 old:0.447526
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+in update:
+0:3,1:0,true
+update old:
+0 3 2 1 
+cost:0.445834 true
+swap_pair:
+1:3,2:2,true
+3:1,0:0,true
+choosen:
+1 2 3 0 
+old:
+0 3 2 1 
+new:0.505171 old:0.450259
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+3:1,0:0,true
+update old:
+1 3 2 0 
+cost:0.443493 true
+swap_pair:
+1:3,3:0,true
+2:2,0:1,true
+choosen:
+2 0 1 3 
+old:
+1 3 2 0 
+new:0.505457 old:0.437315
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.437315 false
+swap_pair:
+0:1,2:2,true
+1:3,3:0,true
+choosen:
+2 0 1 3 
+old:
+1 3 2 0 
+new:0.503254 old:0.434278
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.434278 false
+swap_pair:
+1:3,0:1,true
+2:2,3:0,true
+choosen:
+3 1 0 2 
+old:
+1 3 2 0 
+new:0.458641 old:0.441256
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.441256 false
+swap_pair:
+2:2,1:3,true
+0:1,3:0,false
+choosen:
+1 2 3 0 
+old:
+1 3 2 0 
+new:0.53134 old:0.467094
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.467094 false
+swap_pair:
+2:2,3:0,true
+1:3,0:1,true
+choosen:
+3 1 0 2 
+old:
+1 3 2 0 
+new:0.487231 old:0.464765
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.464765 false
+swap_pair:
+2:2,1:3,true
+0:1,3:0,false
+choosen:
+1 2 3 0 
+old:
+1 3 2 0 
+new:0.52535 old:0.463728
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.463728 false
+swap_pair:
+1:3,2:2,true
+0:1,3:0,false
+choosen:
+1 2 3 0 
+old:
+1 3 2 0 
+new:0.496203 old:0.435976
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.435976 false
+swap_pair:
+2:2,3:0,true
+1:3,0:1,true
+choosen:
+3 1 0 2 
+old:
+1 3 2 0 
+new:0.488322 old:0.464123
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.464123 false
+swap_pair:
+3:0,2:2,true
+0:1,1:3,true
+choosen:
+3 1 0 2 
+old:
+1 3 2 0 
+new:0.517315 old:0.49265
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+in update:
+update old:
+1 3 2 0 
+cost:0.49265 false
+swap_pair:
+0:1,2:2,true
+1:3,3:0,true
+choosen:
+2 0 1 3 
+old:
+1 3 2 0 
+new:0.549318 old:0.498182
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+in update:
+1:3,3:0,true
+0:1,3:3,true
+update old:
+3 0 2 1 
+cost:0.49163 true
+swap_pair:
+3:1,0:3,false
+1:0,2:2,true
+choosen:
+3 2 0 1 
+old:
+3 0 2 1 
+new:0.529103 old:0.475105
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+in update:
+0:3,1:0,true
+update old:
+0 3 2 1 
+cost:0.473978 true
+swap_pair:
+2:2,1:3,true
+3:1,0:0,true
+choosen:
+1 2 3 0 
+old:
+0 3 2 1 
+new:0.533119 old:0.474098
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+in update:
+3:1,0:0,true
+update old:
+1 3 2 0 
+cost:0.471454 true
+swap_pair:
+2:2,0:1,true
+3:0,1:3,true
+choosen:
+2 0 1 3 
+old:
+1 3 2 0 
+new:0.525937 old:0.465764
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+in update:
+1:3,3:0,true
+0:1,3:3,true
+update old:
+3 0 2 1 
+cost:0.468237 false
+swap_pair:
+0:3,1:0,true
+3:1,2:2,true
+choosen:
+0 3 1 2 
+old:
+3 0 2 1 
+new:0.487899 old:0.46607
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+in update:
+0:3,1:0,true
+update old:
+0 3 2 1 
+cost:0.464892 true
+swap_pair:
+3:1,1:3,true
+2:2,0:0,true
+choosen:
+2 1 0 3 
+old:
+0 3 2 1 
+new:0.514734 old:0.466357
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+in update:
+3:1,0:0,true
+update old:
+1 3 2 0 
+cost:0.461917 true
+swap_pair:
+1:3,2:2,true
+0:1,3:0,false
+choosen:
+1 2 3 0 
+old:
+1 3 2 0 
+new:0.520403 old:0.458727
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+in update:
+1:3,3:0,true
+0:1,3:3,true
+update old:
+3 0 2 1 
+cost:0.466528 false
+swap_pair:
+3:1,1:0,true
+2:2,0:3,true
+choosen:
+2 1 3 0 
+old:
+3 0 2 1 
+new:0.519423 old:0.467475
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+3:1,1:0,true
+in update:
+3:1,1:0,true
+update old:
+3 1 2 0 
+cost:0.461788 true
+swap_pair:
+1:1,0:3,true
+3:0,2:2,true
+choosen:
+1 3 0 2 
+old:
+3 1 2 0 
+new:0.480423 old:0.462321
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+3:1,1:0,true
+1:1,0:3,true
+in update:
+1:1,0:3,true
+1:3,3:0,true
+0:1,3:3,true
+update old:
+3 0 2 1 
+cost:0.468052 false
+swap_pair:
+1:0,2:2,true
+0:3,3:1,false
+choosen:
+3 2 0 1 
+old:
+3 0 2 1 
+new:0.516624 old:0.465947
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+3:1,1:0,true
+1:1,0:3,true
+in update:
+3:1,1:0,true
+update old:
+3 1 2 0 
+cost:0.460013 true
+swap_pair:
+0:3,2:2,true
+1:1,3:0,false
+choosen:
+2 1 3 0 
+old:
+3 1 2 0 
+new:0.52118 old:0.463537
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+3:1,1:0,true
+1:1,0:3,true
+in update:
+1:1,0:3,true
+1:3,3:0,true
+0:1,3:3,true
+update old:
+3 0 2 1 
+cost:0.469142 false
+swap_pair:
+1:0,0:3,true
+3:1,2:2,true
+choosen:
+0 3 1 2 
+old:
+3 0 2 1 
+new:0.487138 old:0.46529
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+3:1,1:0,true
+1:1,0:3,true
+in update:
+3:1,1:0,true
+update old:
+3 1 2 0 
+cost:0.457539 true
+swap_pair:
+2:2,3:0,true
+0:3,1:1,true
+choosen:
+1 3 0 2 
+old:
+3 1 2 0 
+new:0.487609 old:0.467747
+tabu_pairs:
+0:2,3:0,true
+1:3,2:1,true
+2:3,3:2,true
+0:1,3:3,true
+0:3,1:0,true
+3:1,0:0,true
+1:3,3:0,true
+3:1,1:0,true
+1:1,0:3,true
+in update:
+1:1,0:3,true
+1:3,3:0,true
+0:1,3:3,true
+update old:
+3 0 2 1 
+cost:0.470388 false
+0 1 3 2 
+0.504272
+0 1 3 2 
+0.46506
+1 0 2 3 
+0.451011
+1 0 2 3 
+0.453073
+1 0 2 3 
+0.459025
+3 0 2 1 
+0.441747
+3 0 2 1 
+0.444527
+0 3 2 1 
+0.445834
+1 3 2 0 
+0.443493
+1 3 2 0 
+0.437315
+1 3 2 0 
+0.434278
+1 3 2 0 
+0.441256
+1 3 2 0 
+0.467094
+1 3 2 0 
+0.464765
+1 3 2 0 
+0.463728
+1 3 2 0 
+0.435976
+1 3 2 0 
+0.464123
+1 3 2 0 
+0.49265
+3 0 2 1 
+0.49163
+0 3 2 1 
+0.473978
+1 3 2 0 
+0.471454
+3 0 2 1 
+0.468237
+0 3 2 1 
+0.464892
+1 3 2 0 
+0.461917
+3 0 2 1 
+0.466528
+3 1 2 0 
+0.461788
+3 0 2 1 
+0.468052
+3 1 2 0 
+0.460013
+3 0 2 1 
+0.469142
+3 1 2 0 
+0.457539
+3 0 2 1 
+0.470388
+4
+0.009197
+14.2948

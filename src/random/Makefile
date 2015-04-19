@@ -2,8 +2,8 @@
 CC=g++
 #CC_FLAGS=-Wall -g -std=c++11 -DRANDOM_START
 CC_FLAGS=-Wall -g -std=c++11
-BIN=localsearch
-SRC=deny.cpp
+BIN=random
+SRC=random.cpp
 
 $(BIN):$(SRC)
 	$(CC) $(SRC) $(CC_FLAGS)  -o $(BIN) 
