@@ -139,9 +139,10 @@ void Deny::stage(int loop)
 	
     iv choosen(total); //新的算法的开销
     choosen  = schedule_now;
-
-    //获取了本轮交换对
+    
+    //获取本轮交换对 
     get_schedule_use_search();
+
 
     //对照禁忌表 检查交换对 
     check_current_swap_pairs();
@@ -274,47 +275,88 @@ void printArray(T array,int total)
 	cout << endl;
 }
 
-
-void Deny::get_schedule_use_search(void)
+void  Deny::get_schedule_use_search(void)
 {
     current_pairs.clear();
-    
-    iv cores;
+    vector<vector<swap_pair> > pairs;
+    vector<int> cnts;
+    int min_cnt = total;
 
     for(int i=0;i<total;++i)
     {
-        cores.push_back(i);
-    }
+        vector<swap_pair> pair;//本轮生成N/2个交换对
+        int cnt = 0; //交换对中禁忌对个数
 
-    random_shuffle(cores.begin(),cores.end());
-
-    iv be_choosed(total,0);
-
-    //只有前面的一半的核才可以选择交换的对象
-    
-    int core1,core2; //core1 ,core2
-
-    for(int i=0;i<total/2;++i)
-    {
-        core1 = cores[i];
-
-        while(1)
+        iv cores;
+        for(int i=0;i<total;++i)
         {
-            int j = getIntRandom(total/2,total-1);
-            core2 = cores[j];
-
-            if(0 == be_choosed[core2])
-            {
-                be_choosed[core2] = 1;
-                break;
-            }
+            cores.push_back(i);
         }
-   
-        assert(core2 != -1);
-        current_pairs.push_back(swap_pair(core1,schedule_now[core1],core2,schedule_now[core2])); 
+
+        random_shuffle(cores.begin(),cores.end());
+
+        iv be_choosed(total,0);
+
+        //只有前面的一半的核才可以选择交换的对象
+        
+        int core1,core2; //core1 ,core2
+
+        for(int i=0;i<total/2;++i)
+        {
+            core1 = cores[i];
+
+            while(1)
+            {
+                int j = getIntRandom(total/2,total-1);
+                core2 = cores[j];
+
+                if(0 == be_choosed[core2])
+                {
+                    be_choosed[core2] = 1;
+                    break;
+                }
+            }
+       
+            assert(core2 != -1);
+            swap_pair tmp(core1,schedule_now[core1],core2,schedule_now[core2]);
+            //cout << tmp << endl;
+            pair.push_back(tmp); 
+            for(int j=0;j<(int)tabu_pairs.size();++j)
+            {
+                if(tabu_pairs[j].cmp(tmp)  != 1 ) //相等或者相反
+                {
+                    cnt++;
+                }
+            }
+
+        }
+
+       // cout << endl;
+        if(cnt < min_cnt)
+        {
+            min_cnt = cnt;
+        }
+
+        pairs.push_back(pair);
+        cnts.push_back(cnt);
 
     }
 
+
+    vector<int> mins;
+    for(int i=0;i<(int)cnts.size();++i)
+    {
+        if(cnts[i] == min_cnt)
+        {
+            mins.push_back(i);
+        }
+    }
+
+    int randint = getIntRandom(0,mins.size()-1);
+    int choose_index = mins[randint];
+    current_pairs.assign(pairs[choose_index].begin(),pairs[choose_index].end());
+
+    cout << "min_cnt " << min_cnt  << " " << mins.size()  << endl;
 }
 
 
@@ -350,39 +392,44 @@ void Deny::update_tabu_pairs()
         int core2 = current_pairs[i].core2;
         bool valid =  current_pairs[i].valid;
 
-        if(valid)
+        //if(valid)
+        if(1)
         {
             double cost_before = getValue(core1,app1)+getValue(core2,app2);
             double cost_after = getValue(core1,app2)+getValue(core2,app1);
-            if(cost_after < cost_before)
+            swap_pair tmp = current_pairs[i];
+            if(cost_after > cost_before)
             {
-                bool not_in = true;
-                for(int j=0;j<tabu_pairs.size();++j)
-                {
-                    int cmp = tabu_pairs[j].cmp(current_pairs[i]);
-
-                    if(cmp == 0)
-                    {
-                        //已有相同的不加入
-                        not_in = false;
-                        break;
-                    }
-
-                    if(cmp == -1)
-                    {
-                        //拥有相反的，将相反的反过来
-                        tabu_pairs[j].reverse();
-                        not_in = false;
-                        break;
-                    } 
-                }
-
-                //不在禁忌表中
-                if(not_in)
-                {
-                    tabu_pairs.push_back(current_pairs[i]);
-                }
+                tmp.reverse();
             }
+            bool not_in = true;
+            for(int j=0;j<tabu_pairs.size();++j)
+            {
+                int cmp = tabu_pairs[j].cmp(tmp);
+
+                if(cmp == 0)
+                {
+                    //已有相同的不加入
+                    not_in = false;
+                    break;
+                }
+
+                if(cmp == -1)
+                {
+                    //拥有相反的，将相反的反过来
+                    tabu_pairs[j].reverse();
+                    not_in = false;
+                    break;
+                } 
+            }
+
+            //不在禁忌表中
+            if(not_in)
+            {
+                tabu_pairs.push_back(tmp);
+            }
+                
+
         }
     }
 }

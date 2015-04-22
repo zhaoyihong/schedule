@@ -191,6 +191,7 @@ void Deny::stage(int loop)
     choosen  = schedule_now;
 
     get_schedule_use_search();
+    swap_cnt += total/2;
 
     //将choosen变为交换的
     for(int i=0;i<total;++i)
@@ -251,7 +252,7 @@ void Deny::stage(int loop)
 		schedule_history.push_back(schedule_now);
 		cost_history.push_back(vcost_this_loop);
 		total_cost_history.push_back(cost_this_loop);
-	    swap_cnt += total/2;
+	    //swap_cnt += total/2;
     } 
 	else
 	{	//旧的更好.search由于是swap交换的,比较swap
@@ -270,7 +271,6 @@ void Deny::stage(int loop)
             cost_swap += cost_for_app;	
         }
        
-
 //        cout << "cost:" << cost_swap << endl; 
 		min_cost = cost_swap; //设置为最小开销
 		total_cost += cost_swap;
@@ -300,126 +300,6 @@ void Deny::get_schedule_use_random(vector<int> &choosen)
     random_shuffle(choosen.begin(),choosen.end()); 
 }
 
-
-void Deny::get_schedule_use_probability(vector<int> &choosen)
-{
-    //内核打乱顺序
-    iv vcore; //内核列表 
-    iv vapp;  //app列表,用来存放尚未调度的app
-    for(int i=0;i < total; ++i)
-	{
-		vcore.push_back(i);
-	    vapp.push_back(i);
-    }
-	
-    vector<int>::iterator it;
-	random_shuffle(vcore.begin(),vcore.end()); //打乱顺序
-   
-
-    //每个内核依次进行选择应用
-    for(it = vcore.begin(); it != vcore.end(); ++ it)
-    {
-        //计算每个应用的概率 
-
-        int coreid = *it;
-
-        cout << "core:" << coreid << endl;
-
-
-        double sum = 0; //开销的累加和
-        vector<int>::iterator it2;
-        //求非0的最小值 
-
-        vector<double> fake_cost(total,0.0);
-        double min = 100;
-        for(it2=vapp.begin();it2!=vapp.end();++it2)
-        {
-            double real_cost = last_cost[coreid][*it2];
-            fake_cost[*it2] = real_cost;
-            //min 是cost中非0且最小的值
-            if(real_cost > 0.000001 && real_cost < min)
-            {
-                min = real_cost;
-            }
-        }
-
-        if(min == 100)
-        {
-            min = 1;
-        }
-
-
-        cout << "last cost:";
-        for(it2=vapp.begin();it2!=vapp.end();++it2)
-        {
-            if(fake_cost[*it2] < 0.000001)
-            {
-                fake_cost[*it2] = min;
-            }
-
-            cout << last_cost[coreid][*it2] << " ";
-            sum += fake_cost[*it2];
-        }
-        cout << endl;
-       
-        //sum = sum*2;
-        iv prob; //概率大小 : 总和 - 个体
-        cout << "last cost trans:" ;
-        for(it2=vapp.begin();it2!=vapp.end();++it2)
-        {
-            int intprob = (sum-fake_cost[*it2])*1000;
-           
-            /*
-            if(last_cost[coreid][*it2] <  0.000001 )
-            {
-                intprob *= 10;
-            }
-            */
-
-            prob.push_back(intprob);
-
-            //cout << prob.back() << " ";
-            cout << intprob  << " ";
-        }
-        cout << endl;
-
-        //转换一下,用轮盘法来选择
-        
-        for(int i=1;i<(int)prob.size();++i)
-        {
-            prob[i] += prob[i-1];
-        }
-
-        int rint = getIntRandom(0,prob.back());
-        int choose_app = 0;
-        
-        for(int i=0;i<(int)prob.size();++i)
-        {
-            if(rint <= prob[i])
-            {
-                choose_app = vapp[i];    
-                break;
-            }
-        }
-      
-    
-        cout <<  "vapp:";
-        printArray(vapp,vapp.size());
-        cout << "prob:";
-        printArray(prob,prob.size());    
-        cout << "rint:" << rint << endl;
-        cout <<"choose:" << choose_app << endl;
-        //cout << endl;
-
-       //将choonsen_app添加到choosen中,并从vapp中删除
-        vapp.erase(remove(vapp.begin(),vapp.end(),choose_app),vapp.end());
-        choosen[coreid] = choose_app ;
-    }
-
-    //cout << "choosen:" ;
-    //printArray(choosen,choosen.size());
-    //cout << endl;
-}
 
 void Deny::get_schedule_use_search(void)
 {
@@ -471,6 +351,8 @@ void Deny::get_schedule_use_search(void)
 
 void Deny::swap_over()
 {
+
+    int cnt =0;
     for(map<int,int>::iterator it = swap_pairs.begin(); it != swap_pairs.end(); ++it)
     {
         int core1 = it->first;
@@ -481,15 +363,16 @@ void Deny::swap_over()
         double cost_now = getValue(core1,app1) + getValue(core2,app2);
         double cost_swap = getValue(core1,app2) + getValue(core2,app1);
 
-        if(cost_now > cost_swap)
+        if(cost_now > cost_swap) //交换后的开销更小.
         {
          //   cout << "in swap:" << core1 << " " << core2 << endl;
             //交换core1和core2上的app
             schedule_now[core1] = app2;
             schedule_now[core2] = app1;
-            swap_cnt ++;
+            cnt++;
         }
     }
+    swap_cnt += (total/2-cnt);//cnt是指保留的交换，total/2-cnt是指又要进行的交换。
 
 
 

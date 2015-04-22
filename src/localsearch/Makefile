@@ -1,7 +1,6 @@
 .PHONY:clean test
 CC=g++
-#CC_FLAGS=-Wall -g -std=c++11 -DRANDOM_START
-CC_FLAGS=-Wall -g -std=c++11
+CC_FLAGS=-Wall -g -std=c++11 -DRANDOM_START
 BIN=localsearch
 SRC=deny.cpp
 
