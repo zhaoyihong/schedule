@@ -6,7 +6,32 @@ typedef vector< vector<int> > iiv;
 typedef vector<double> dv;
 typedef vector< vector<double> > ddv;
 Deny::Deny(int total,char *path,int maxloop):total(total),path(path),maxloop(maxloop){
-	init();
+
+    ifstream infs("../../shell/cost_data");
+    double cost;
+    //载入应用之间的优先级矩阵
+    for(int i=0;i<15;++i)
+    {
+        vector<double> tmp;
+        for(int j=0;j<15;++j)
+        {
+            infs >> cost; 
+            tmp.push_back(cost);
+        }
+        cost_datas.push_back(tmp);
+    }
+/*
+    for(int i=0;i<15;++i)
+    {
+        for(int j=0;j<15;++j)
+        {
+            cout << cost_datas[i][j] << " ";
+        }
+        cout << endl;
+    }
+*/
+
+    init();
 }
 
 Deny::~Deny(){
@@ -24,7 +49,6 @@ void Deny::init()
 		ischedule.push_back(i);
 	}
 
-    
     #ifdef RANDOM_START     
     random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
     #endif
@@ -139,12 +163,11 @@ void Deny::stage(int loop)
 	
     iv choosen(total); //新的算法的开销
     choosen  = schedule_now;
-    
-    //获取本轮交换对 
+
+    //获取了本轮交换对
     get_schedule_use_search();
 
-
-    //对照禁忌表 检查交换对 
+    //对照禁忌表 检查交换对
     check_current_swap_pairs();
    
     cout << "swap_pair:" << endl;
@@ -215,7 +238,6 @@ void Deny::stage(int loop)
 		schedule_history.push_back(schedule_now);
 		cost_history.push_back(vcost_this_loop);
 		total_cost_history.push_back(cost_this_loop);
-	    swap_cnt += total/2;
     } 
 	else
 	{	//旧的更好.search由于是swap交换的,比较swap
@@ -224,9 +246,9 @@ void Deny::stage(int loop)
         //      cout << "swap over:" << endl;
   
         cout << "in update:" << endl;
-        //对照禁忌交换对，生成新的对调方案
-        //for(int i=0;i<(int)(tabu_pairs.size());++i)
-        for(int i=tabu_pairs.size()-1;i>=0;--i)
+
+        int cnt= 0;
+        for(int i=tabu_pairs.size()-1;i>tabu_pairs.size()-1-total/2;--i)//只根据当前回合新增的禁忌做改变
         {
             int app1 = tabu_pairs[i].app1;     
             int app2 = tabu_pairs[i].app2;     
@@ -236,11 +258,14 @@ void Deny::stage(int loop)
             //出现了交换对,就可以进行交换
             if(schedule_now[core1] == app1 && schedule_now[core2] == app2)
             {
-                cout << tabu_pairs[i] << endl;
+                cout << "get from tabu_pairs:"  << tabu_pairs[i] << endl;
                 schedule_now[core1] = app2;
                 schedule_now[core2] = app1;
+                cnt++;
             }
         }
+        
+        swap_cnt += (total/2-cnt);//cnt表示不用换回来的次数
 
         
         cout << "update old:" << endl;
@@ -253,10 +278,10 @@ void Deny::stage(int loop)
         {
             double cost_for_app = getValue(i,schedule_now[i]);
             vcost_this_loop_old.push_back(cost_for_app);
-            cost_swap += cost_for_app;	
+            cost_swap += cost_for_app;
         }
        
-        cout << "cost:" << cost_swap << " "<< boolalpha <<  (cost_swap < cost_this_loop_old)  << endl;       
+        cout << "cost:" << cost_swap << " "<< boolalpha <<  (cost_swap <= cost_this_loop_old)  << endl;       
 
 		total_cost += cost_swap;
 		schedule_history.push_back(schedule_now);	
@@ -275,90 +300,54 @@ void printArray(T array,int total)
 	cout << endl;
 }
 
-
-//使用产生多种交换方案，然后选取被禁忌的方案数最少的一种
-void  Deny::get_schedule_use_search(void)
+//在半在线中进行改进，使用离线数据
+void Deny::get_schedule_use_search(void)
 {
     current_pairs.clear();
-    vector<vector<swap_pair> > pairs;
-    vector<int> cnts;
-    int min_cnt = total;
-
+    
+    iv cores;
     for(int i=0;i<total;++i)
     {
-        vector<swap_pair> pair;//本轮生成N/2个交换对
-        int cnt = 0; //交换对中禁忌对个数
-
-        iv cores;
-        for(int i=0;i<total;++i)
-        {
-            cores.push_back(i);
-        }
-
-        random_shuffle(cores.begin(),cores.end());
-
-        iv be_choosed(total,0);
-
-        //只有前面的一半的核才可以选择交换的对象
-        
-        int core1,core2; //core1 ,core2
-
-        for(int i=0;i<total/2;++i)
-        {
-            core1 = cores[i];
-
-            while(1)
-            {
-                int j = getIntRandom(total/2,total-1);
-                core2 = cores[j];
-
-                if(0 == be_choosed[core2])
-                {
-                    be_choosed[core2] = 1;
-                    break;
-                }
-            }
-       
-            assert(core2 != -1);
-            swap_pair tmp(core1,schedule_now[core1],core2,schedule_now[core2]);
-            //cout << tmp << endl;
-            pair.push_back(tmp); 
-            for(int j=0;j<(int)tabu_pairs.size();++j)
-            {
-                if(tabu_pairs[j].cmp(tmp)  != 1 ) //相等或者相反
-                {
-                    cnt++;
-                }
-            }
-
-        }
-
-       // cout << endl;
-        if(cnt < min_cnt)
-        {
-            min_cnt = cnt;
-        }
-
-        pairs.push_back(pair);
-        cnts.push_back(cnt);
-
+        cores.push_back(i);
     }
+    random_shuffle(cores.begin(),cores.end());
+    iv cores1(cores.begin(),cores.begin()+total/2);
+    iv cores2(cores.begin()+total/2,cores.end());
 
+    iv be_choosed(total,0);
 
-    vector<int> mins;
-    for(int i=0;i<(int)cnts.size();++i)
+    //只有前面的一半的核才可以选择交换的对象
+    
+    int core1,core2; //core1 ,core2
+
+    for(int i=0;i<cores1.size();++i)
     {
-        if(cnts[i] == min_cnt)
+        core1 = cores1[i];
+        //以前是随机选择，现在是选取差距最大的
+        //int j = getIntRandom(total/2,total-1);
+        double max = -1.0;
+        core2 = -1; 
+        //轮询被动组，选择未被选取的差距最大的
+        for(int k=0;k<total/2;++k)
         {
-            mins.push_back(i);
+            int t = cores2[k];
+            if(be_choosed[t] == 0)
+            {
+                if(cost_datas[core1][t] > max)
+                {
+                    max = cost_datas[core1][t];
+                    core2 = t;
+                }
+            }
         }
+
+        assert(core2 != -1);
+        assert(be_choosed[core2] == 0);
+        be_choosed[core2] = 1;
+        current_pairs.push_back(swap_pair(core1,schedule_now[core1],core2,schedule_now[core2])); 
+
     }
 
-    int randint = getIntRandom(0,mins.size()-1);
-    int choose_index = mins[randint];
-    current_pairs.assign(pairs[choose_index].begin(),pairs[choose_index].end());
-
-    cout << "min_cnt " << min_cnt  << " " << mins.size()  << endl;
 }
 
 
@@ -366,25 +355,30 @@ void  Deny::get_schedule_use_search(void)
 void Deny::check_current_swap_pairs()
 {
     //对比禁忌表与当前交换对，如果有和禁忌表中相反的，直接设置为无效交换对
-
+    int cnt=0;
     for(int i=0;i<current_pairs.size();++i)
     {   
         //swap_pair cs = current_pairs[i];
-        for(int j=0;j<tabu_pairs.size();++j)
+        for(int j=0;j<tabu_pairs.size();++j) //如果禁忌表使用hash结构，那么这一步应该是O(1)
         {
             if(current_pairs[i].cmp(tabu_pairs[j]) == -1)
             {
                 current_pairs[i].valid = false;
                 deny_cnt ++;
+                cnt++;
                 break;
             }
         }
     }
+
+    swap_cnt += (total/2-cnt); //每轮探索前进行的交换次数
 }
 
 
 void Deny::update_tabu_pairs()
 {
+    bad_pairs.clear();
+
     //检查所有的交换对
     for(int i=0;i<current_pairs.size();++i)
     {
@@ -394,16 +388,18 @@ void Deny::update_tabu_pairs()
         int core2 = current_pairs[i].core2;
         bool valid =  current_pairs[i].valid;
 
-        //if(valid)
-        if(1)
+        if(valid)
         {
             double cost_before = getValue(core1,app1)+getValue(core2,app2);
             double cost_after = getValue(core1,app2)+getValue(core2,app1);
+        
             swap_pair tmp = current_pairs[i];
             if(cost_after > cost_before)
             {
+                bad_pairs.push_back(tmp);               
                 tmp.reverse();
-            }
+            }             
+            
             bool not_in = true;
             for(int j=0;j<tabu_pairs.size();++j)
             {
@@ -430,8 +426,6 @@ void Deny::update_tabu_pairs()
             {
                 tabu_pairs.push_back(tmp);
             }
-                
-
         }
     }
 }
@@ -444,12 +438,12 @@ int getIntRandom(int min,int max)
 void printUsage(const char *binname)
 {
 	cout << "usage :" << endl;
-	cout << binname << " path total maxloops" << endl;
+	cout << binname << " path total maxloops bin_names" << endl;
 }
 
 int main(int argc,char *argv[])
 {
-	if(argc  != 4)
+	if(argc  < 4)
 	{
 		printUsage(argv[0]);
 		return -1;
@@ -459,7 +453,22 @@ int main(int argc,char *argv[])
 	char *path = argv[1];
 	int total = atoi(argv[2]);	
 	int maxloop = atoi(argv[3]);	
-	Deny deny(total,path,maxloop);
+  
+    if(argc != total+4)
+    {
+		printUsage(argv[0]);
+        return -1;
+    }
+
+    Deny deny(total,path,maxloop);
+    
+    //读取应用的编号
+    for(int i=0;i<total;++i)
+    {
+        deny.bin_indexs.push_back(atoi(argv[4+i]));        
+    }
+    
+    //printArray(deny.bin_indexs,deny.bin_indexs.size());
     
     struct timeval tv_start,tv_end;
      gettimeofday(&tv_start,NULL);
@@ -472,6 +481,8 @@ int main(int argc,char *argv[])
     //deny.printChengji();
 
     cout << deny.deny_cnt << endl;
+
+    cout << deny.swap_cnt << endl;
     cout << time_total << endl;
     
    
