@@ -258,11 +258,14 @@ void Deny::stage(int loop)
                 cout << "get from tabu_pairs:"  << tabu_pairs[i] << endl;
                 schedule_now[core1] = app2;
                 schedule_now[core2] = app1;
-                cnt++;
+                cnt++; //不会换回来的次数
             }
         }
         
-        swap_cnt += (total/2-cnt);//cnt表示不用换回来的次数
+        //current_cnt表示有效有效交换对个数
+        //current_cnt - cnt 表示有效交换对中要交换还原的个数
+        swap_cnt += (current_cnt - cnt)*2;
+        cout << "swap cnt + " << (current_cnt-cnt)*2 << endl;
 
         
         cout << "update old:" << endl;
@@ -344,6 +347,7 @@ void Deny::get_schedule_use_search(void)
 
 void Deny::check_current_swap_pairs()
 {
+    current_cnt = 0;
     //对比禁忌表与当前交换对，如果有和禁忌表中相反的，直接设置为无效交换对
     int cnt=0;
     for(int i=0;i<current_pairs.size();++i)
@@ -360,8 +364,11 @@ void Deny::check_current_swap_pairs()
             }
         }
     }
-
-    swap_cnt += (total/2-cnt); //每轮探索前进行的交换次数
+    cout << "cnt:" << cnt << endl; //拒绝交换的次数
+    current_cnt = total/2-cnt;
+    cout << "swap,caiyang + " << current_cnt *2 << endl;
+    swap_cnt += current_cnt * 2; //每轮探索前进行的交换次数
+    caiyang_cnt += current_cnt *2 ; 
 }
 
 
@@ -455,7 +462,7 @@ int main(int argc,char *argv[])
     deny.printHistory();
     //deny.printChengji();
 
-    cout << deny.deny_cnt << endl;
+    cout << deny.caiyang_cnt << endl;
 
     cout << deny.swap_cnt << endl;
     cout << time_total << endl;

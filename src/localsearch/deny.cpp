@@ -23,11 +23,9 @@ void Deny::init()
 		ischedule.push_back(i);
 	}
 
-    
     #ifdef RANDOM_START     
-    random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
+    //random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
     #endif
-
 
     min_cost = 0;	
 	schedule_now = ischedule;
@@ -191,7 +189,7 @@ void Deny::stage(int loop)
     choosen  = schedule_now;
 
     get_schedule_use_search();
-    swap_cnt += total/2;
+    swap_cnt += total;
 
     //将choosen变为交换的
     for(int i=0;i<total;++i)
@@ -372,7 +370,7 @@ void Deny::swap_over()
             cnt++;
         }
     }
-    swap_cnt += (total/2-cnt);//cnt是指保留的交换，total/2-cnt是指又要进行的交换。
+    swap_cnt += (total/2-cnt)*2;//cnt是指保留的交换，total/2-cnt是指又要进行的交换。
 
 
 

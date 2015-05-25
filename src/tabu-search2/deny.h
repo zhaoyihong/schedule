@@ -130,7 +130,8 @@ public :
 	double getLastCost(int app,int core);	
     int swap_cnt = 0; //交换的次数
     int deny_cnt = 0; //防止交换的次数    
-
+    int current_cnt = 0; //本轮有效对的个数
+    int caiyang_cnt = 0;//总共采样次数。
 };
 
 

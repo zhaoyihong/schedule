@@ -7,7 +7,7 @@ typedef vector<double> dv;
 typedef vector< vector<double> > ddv;
 Deny::Deny(int total,char *path,int maxloop):total(total),path(path),maxloop(maxloop){
 
-    ifstream infs("../../shell/cost_data");
+    ifstream infs("../../shell/data/cost_data2");
     double cost;
     //载入应用之间的优先级矩阵
     for(int i=0;i<15;++i)
@@ -50,7 +50,7 @@ void Deny::init()
 	}
 
     #ifdef RANDOM_START     
-    random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
+    //random_shuffle(ischedule.begin(),ischedule.end()); //打乱顺序
     #endif
 
 	schedule_now = ischedule;
@@ -168,7 +168,7 @@ void Deny::stage(int loop)
     get_schedule_use_search();
 
     //对照禁忌表 检查交换对
-    check_current_swap_pairs();
+    //check_current_swap_pairs();
    
     cout << "swap_pair:" << endl;
     //对照本轮交换对，生成新的对调方案
@@ -314,6 +314,7 @@ void Deny::get_schedule_use_search(void)
     iv cores1(cores.begin(),cores.begin()+total/2);
     iv cores2(cores.begin()+total/2,cores.end());
 
+
     iv be_choosed(total,0);
 
     //只有前面的一半的核才可以选择交换的对象
@@ -333,9 +334,9 @@ void Deny::get_schedule_use_search(void)
             int t = cores2[k];
             if(be_choosed[t] == 0)
             {
-                if(cost_datas[core1][t] > max)
+                if(cost_datas[schedule_now[core1]][schedule_now[t]] > max)
                 {
-                    max = cost_datas[core1][t];
+                    max = cost_datas[schedule_now[core1]][schedule_now[t]];
                     core2 = t;
                 }
             }
