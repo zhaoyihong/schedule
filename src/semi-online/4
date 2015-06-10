@@ -1,0 +1,1307 @@
+./semi-online ../../shell/data/matrix8-8-1 8 25 0  1  2  3  4  5  6  7
+swap_pair:
+2:2,6:6,true
+1:0,7:5,true
+0:4,3:3,true
+4:1,5:7,true
+choosen:
+3 5 6 4 7 1 2 0 
+old:
+4 0 2 3 1 7 6 5 
+new:5.80511 old:7.01664
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+choose new
+swap_pair:
+5:1,7:0,true
+3:4,6:2,true
+1:5,4:7,true
+2:6,0:3,true
+choosen:
+6 7 3 2 5 0 4 1 
+old:
+3 5 6 4 7 1 2 0 
+new:6.24832 old:5.83789
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+in update:
+get from tabu_pairs:2:6,0:3,true
+get from tabu_pairs:3:4,6:2,true
+update old:
+6 5 3 2 7 1 4 0 
+cost:5.54158 true
+swap_pair:
+4:7,1:5,false
+7:0,3:2,true
+5:1,6:4,true
+0:6,2:3,false
+choosen:
+6 5 3 0 7 4 1 2 
+old:
+6 5 3 2 7 1 4 0 
+new:5.48538 old:5.59054
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+choose new
+swap_pair:
+3:0,1:5,true
+6:1,4:7,true
+7:2,5:4,true
+0:6,2:3,false
+choosen:
+6 0 3 5 1 2 7 4 
+old:
+6 5 3 0 7 4 1 2 
+new:7.83986 old:5.44963
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+in update:
+get from tabu_pairs:7:2,5:4,true
+update old:
+6 5 3 0 7 2 1 4 
+cost:5.42844 true
+swap_pair:
+5:2,6:1,true
+0:6,3:0,true
+1:5,4:7,false
+7:4,2:3,true
+choosen:
+0 5 4 6 7 1 2 3 
+old:
+6 5 3 0 7 2 1 4 
+new:5.15906 old:5.53932
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+choose new
+swap_pair:
+0:0,5:1,true
+6:2,4:7,true
+3:6,7:3,true
+2:4,1:5,true
+choosen:
+1 4 5 3 2 0 7 6 
+old:
+0 5 4 6 7 1 2 3 
+new:6.15965 old:5.21867
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+in update:
+get from tabu_pairs:2:4,1:5,true
+get from tabu_pairs:6:2,4:7,true
+update old:
+0 4 5 6 2 1 7 3 
+cost:5.01169 true
+swap_pair:
+3:6,6:7,true
+0:0,5:1,false
+1:4,2:5,false
+4:2,7:3,true
+choosen:
+0 4 5 7 3 1 6 2 
+old:
+0 4 5 6 2 1 7 3 
+new:4.86039 old:4.93784
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+choose new
+swap_pair:
+5:1,3:7,true
+0:0,6:6,true
+1:4,7:2,true
+2:5,4:3,true
+choosen:
+6 2 3 1 5 7 0 4 
+old:
+0 4 5 7 3 1 6 2 
+new:5.96497 old:4.94868
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+in update:
+update old:
+0 4 5 7 3 1 6 2 
+cost:4.94868 true
+swap_pair:
+0:0,5:1,false
+7:2,3:7,true
+6:6,4:3,true
+1:4,2:5,false
+choosen:
+0 4 5 2 6 1 3 7 
+old:
+0 4 5 7 3 1 6 2 
+new:7.39407 old:4.95812
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+in update:
+get from tabu_pairs:7:2,3:7,true
+update old:
+0 4 5 2 3 1 6 7 
+cost:4.94785 true
+swap_pair:
+1:4,5:1,true
+3:2,7:7,false
+6:6,4:3,false
+0:0,2:5,true
+choosen:
+5 1 0 2 3 4 6 7 
+old:
+0 4 5 2 3 1 6 7 
+new:6.40527 old:4.91588
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+in update:
+update old:
+0 4 5 2 3 1 6 7 
+cost:4.91588 true
+swap_pair:
+6:6,7:7,true
+3:2,5:1,true
+0:0,2:5,false
+1:4,4:3,true
+choosen:
+0 3 5 1 4 2 7 6 
+old:
+0 4 5 2 3 1 6 7 
+new:6.10353 old:4.95115
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+in update:
+update old:
+0 4 5 2 3 1 6 7 
+cost:4.95115 true
+swap_pair:
+7:7,6:6,false
+0:0,2:5,false
+4:3,3:2,true
+5:1,1:4,false
+choosen:
+0 4 5 3 2 1 6 7 
+old:
+0 4 5 2 3 1 6 7 
+new:4.76648 old:4.96907
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+choose new
+swap_pair:
+0:0,5:1,false
+1:4,2:5,false
+6:6,7:7,false
+3:3,4:2,false
+choosen:
+0 4 5 3 2 1 6 7 
+old:
+0 4 5 3 2 1 6 7 
+new:4.77204 old:4.77204
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+in update:
+update old:
+0 4 5 3 2 1 6 7 
+cost:4.77204 true
+swap_pair:
+1:4,6:6,true
+7:7,2:5,true
+3:3,4:2,false
+5:1,0:0,false
+choosen:
+0 6 7 3 2 1 4 5 
+old:
+0 4 5 3 2 1 6 7 
+new:6.0894 old:4.74594
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+in update:
+get from tabu_pairs:7:7,2:5,true
+update old:
+0 4 7 3 2 1 6 5 
+cost:4.67945 true
+swap_pair:
+3:3,6:6,true
+7:5,5:1,true
+1:4,4:2,true
+2:7,0:0,true
+choosen:
+7 2 0 6 4 5 3 1 
+old:
+0 4 7 3 2 1 6 5 
+new:6.10534 old:4.69516
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+in update:
+get from tabu_pairs:2:7,0:0,true
+update old:
+7 4 0 3 2 1 6 5 
+cost:4.66695 true
+swap_pair:
+7:5,6:6,true
+1:4,5:1,false
+0:7,4:2,true
+2:0,3:3,true
+choosen:
+2 4 3 0 7 1 5 6 
+old:
+7 4 0 3 2 1 6 5 
+new:5.65443 old:4.7044
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+in update:
+get from tabu_pairs:2:0,3:3,true
+update old:
+7 4 3 0 2 1 6 5 
+cost:4.68233 true
+swap_pair:
+5:1,0:7,true
+3:0,4:2,true
+6:6,1:4,false
+7:5,2:3,true
+choosen:
+1 4 5 2 0 7 6 3 
+old:
+7 4 3 0 2 1 6 5 
+new:5.42511 old:4.64446
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+in update:
+update old:
+7 4 3 0 2 1 6 5 
+cost:4.64446 true
+swap_pair:
+3:0,6:6,true
+0:7,5:1,false
+7:5,1:4,true
+2:3,4:2,true
+choosen:
+7 5 2 6 3 1 0 4 
+old:
+7 4 3 0 2 1 6 5 
+new:5.26282 old:4.66967
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+in update:
+update old:
+7 4 3 0 2 1 6 5 
+cost:4.66967 true
+swap_pair:
+1:4,6:6,false
+2:3,5:1,true
+4:2,3:0,false
+7:5,0:7,true
+choosen:
+5 4 1 0 2 3 6 7 
+old:
+7 4 3 0 2 1 6 5 
+new:5.82437 old:4.66489
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+2:1,5:3,true
+7:7,0:5,true
+in update:
+update old:
+7 4 3 0 2 1 6 5 
+cost:4.66489 true
+swap_pair:
+7:5,6:6,false
+2:3,5:1,false
+4:2,3:0,false
+1:4,0:7,true
+choosen:
+4 7 3 0 2 1 6 5 
+old:
+7 4 3 0 2 1 6 5 
+new:4.60915 old:4.63528
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+2:1,5:3,true
+7:7,0:5,true
+1:4,0:7,true
+choose new
+swap_pair:
+2:3,6:6,true
+4:2,5:1,true
+1:7,7:5,true
+0:4,3:0,true
+choosen:
+0 5 6 4 1 2 3 7 
+old:
+4 7 3 0 2 1 6 5 
+new:8.3756 old:4.63959
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+2:1,5:3,true
+7:7,0:5,true
+1:4,0:7,true
+2:6,6:3,true
+4:1,5:2,true
+1:5,7:7,true
+0:0,3:4,true
+in update:
+update old:
+4 7 3 0 2 1 6 5 
+cost:4.63959 true
+swap_pair:
+2:3,6:6,false
+3:0,4:2,false
+7:5,1:7,false
+5:1,0:4,true
+choosen:
+1 7 3 0 2 4 6 5 
+old:
+4 7 3 0 2 1 6 5 
+new:5.24888 old:4.63358
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+2:1,5:3,true
+7:7,0:5,true
+1:4,0:7,true
+2:6,6:3,true
+4:1,5:2,true
+1:5,7:7,true
+0:0,3:4,true
+5:4,0:1,true
+in update:
+update old:
+4 7 3 0 2 1 6 5 
+cost:4.63358 true
+swap_pair:
+7:5,6:6,false
+5:1,3:0,true
+2:3,4:2,false
+0:4,1:7,false
+choosen:
+4 7 3 1 2 0 6 5 
+old:
+4 7 3 0 2 1 6 5 
+new:4.76196 old:4.65138
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+2:1,5:3,true
+7:7,0:5,true
+1:4,0:7,true
+2:6,6:3,true
+4:1,5:2,true
+1:5,7:7,true
+0:0,3:4,true
+5:4,0:1,true
+5:0,3:1,true
+in update:
+update old:
+4 7 3 0 2 1 6 5 
+cost:4.65138 true
+swap_pair:
+1:7,6:6,true
+4:2,3:0,false
+2:3,7:5,false
+5:1,0:4,false
+choosen:
+4 6 3 0 2 1 7 5 
+old:
+4 7 3 0 2 1 6 5 
+new:6.02401 old:4.63748
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+2:1,5:3,true
+7:7,0:5,true
+1:4,0:7,true
+2:6,6:3,true
+4:1,5:2,true
+1:5,7:7,true
+0:0,3:4,true
+5:4,0:1,true
+5:0,3:1,true
+1:6,6:7,true
+in update:
+update old:
+4 7 3 0 2 1 6 5 
+cost:4.63748 true
+swap_pair:
+1:7,6:6,false
+2:3,5:1,false
+0:4,7:5,true
+4:2,3:0,false
+choosen:
+5 7 3 0 2 1 6 4 
+old:
+4 7 3 0 2 1 6 5 
+new:0 old:0
+tabu_pairs:
+2:6,6:2,true
+1:5,7:0,true
+0:3,3:4,true
+4:1,5:7,true
+5:0,7:1,true
+3:4,6:2,true
+1:7,4:5,true
+2:6,0:3,true
+7:2,3:0,true
+5:1,6:4,true
+3:5,1:0,true
+6:7,4:1,true
+7:2,5:4,true
+5:1,6:2,true
+0:6,3:0,true
+7:4,2:3,true
+0:1,5:0,true
+6:2,4:7,true
+3:3,7:6,true
+2:4,1:5,true
+3:6,6:7,true
+4:3,7:2,true
+5:7,3:1,true
+0:6,6:0,true
+1:2,7:4,true
+2:3,4:5,true
+7:2,3:7,true
+6:3,4:6,true
+1:1,5:4,true
+0:5,2:0,true
+6:7,7:6,true
+3:1,5:2,true
+1:3,4:4,true
+4:3,3:2,true
+1:6,6:4,true
+7:7,2:5,true
+3:6,6:3,true
+7:1,5:5,true
+1:2,4:4,true
+2:7,0:0,true
+7:6,6:5,true
+0:2,4:7,true
+2:0,3:3,true
+5:7,0:1,true
+3:2,4:0,true
+7:3,2:5,true
+3:6,6:0,true
+7:4,1:5,true
+2:2,4:3,true
+2:1,5:3,true
+7:7,0:5,true
+1:4,0:7,true
+2:6,6:3,true
+4:1,5:2,true
+1:5,7:7,true
+0:0,3:4,true
+5:4,0:1,true
+5:0,3:1,true
+1:6,6:7,true
+0:4,7:5,true
+in update:
+get from tabu_pairs:0:4,7:5,true
+update old:
+5 7 3 0 2 1 6 4 
+cost:0 true
+3 5 6 4 7 1 2 0 
+5.80511
+6 5 3 2 7 1 4 0 
+5.54158
+6 5 3 0 7 4 1 2 
+5.48538
+6 5 3 0 7 2 1 4 
+5.42844
+0 5 4 6 7 1 2 3 
+5.15906
+0 4 5 6 2 1 7 3 
+5.01169
+0 4 5 7 3 1 6 2 
+4.86039
+0 4 5 7 3 1 6 2 
+4.94868
+0 4 5 2 3 1 6 7 
+4.94785
+0 4 5 2 3 1 6 7 
+4.91588
+0 4 5 2 3 1 6 7 
+4.95115
+0 4 5 3 2 1 6 7 
+4.76648
+0 4 5 3 2 1 6 7 
+4.77204
+0 4 7 3 2 1 6 5 
+4.67945
+7 4 0 3 2 1 6 5 
+4.66695
+7 4 3 0 2 1 6 5 
+4.68233
+7 4 3 0 2 1 6 5 
+4.64446
+7 4 3 0 2 1 6 5 
+4.66967
+7 4 3 0 2 1 6 5 
+4.66489
+4 7 3 0 2 1 6 5 
+4.60915
+4 7 3 0 2 1 6 5 
+4.63959
+4 7 3 0 2 1 6 5 
+4.63358
+4 7 3 0 2 1 6 5 
+4.65138
+4 7 3 0 2 1 6 5 
+4.63748
+5 7 3 0 2 1 6 4 
+0
+40
+126
+0.027176
+117.773

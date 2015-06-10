@@ -1,0 +1,4 @@
+ammp,bzip2,crafty,equake
+bzip2,gcc,gzip,mesa
+mcf,twolf,vortex,wupwise
+parser,swim,twolf,vpr
